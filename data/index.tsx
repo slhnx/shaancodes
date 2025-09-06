@@ -78,3 +78,53 @@ export const projects = [
     github_repo_link: "https://github.com/shaan-alam/zettel",
   },
 ];
+
+export const skills = [
+  {
+    icon: "/images/react.svg",
+    label: "React",
+    id: "react",
+  },
+  {
+    icon: "/images/nextjs.svg",
+    label: "Next.js",
+    id: "nextjs",
+  },
+  {
+    icon: "/images/typescript.svg",
+    label: "TypeScript",
+    id: "typescript",
+  },
+  {
+    icon: "/images/nodejs.svg",
+    label: "Node.js",
+    id: "nodejs",
+  },
+  {
+    icon: "/images/postgres.svg",
+    label: "Postgres",
+    id: "postgres",
+  },
+  {
+    icon: "/images/trpc.svg",
+    label: "tRPC",
+    id: "trpc",
+  },
+  {
+    icon: "/images/tailwind.svg",
+    label: "Tailwind CSS",
+    id: "tailwind",
+  },
+  {
+    icon: "/images/figma.svg",
+    label: "Figma",
+    id: "figma",
+  },
+];
+
+export const social_links = {
+  twitter: "https://x.com/shaancodes_",
+  github: "https://github.com/slhxn",
+  linkedin: "https://linkedin.com/in/shaan-alam",
+  instagram: "https://instagram.com/shaancodes",
+};

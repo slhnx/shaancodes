@@ -1,6 +1,20 @@
 "use client";
+import { skills } from "@/data";
 import { motion } from "motion/react";
 import Image from "next/image";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "../ui/tooltip";
+import { Badge } from "../ui/badge";
+import {
+  IconBrandGithub,
+  IconBrandInstagram,
+  IconBrandLinkedin,
+  IconBrandX,
+} from "@tabler/icons-react";
 
 const titleVariant = {
   initial: { opacity: 0, y: -15, filter: "blur(40px)" },
@@ -31,7 +45,7 @@ const Intro = () => {
             height={200}
             width={200}
             alt="Shaan Alam"
-            className="rounded-xl"
+            className="rounded-xl transition-transform hover:scale-105 hover:-rotate-[5deg]"
           />
           <div>
             <motion.h4
@@ -62,6 +76,23 @@ const Intro = () => {
               Full-Stack Developer crafting modern web apps and SaaS products —
               sharing my journey, projects, and insights online.
             </motion.div>
+            <div className="mt-6">
+              <div className="flex gap-3 mt-4">
+                <span className="cursor-pointer transition-all hover:scale-110 hover:bg-secondary rounded-full w-fit p-2">
+                  <IconBrandX />
+                </span>
+                <span className="cursor-pointer transition-all hover:scale-110 hover:bg-secondary rounded-full w-fit p-2">
+                  <IconBrandGithub />
+                </span>
+                <span className="cursor-pointer transition-all hover:scale-110 hover:bg-secondary rounded-full w-fit p-2">
+                  <IconBrandLinkedin />
+                </span>
+                <span className="cursor-pointer transition-all hover:scale-110 hover:bg-secondary rounded-full w-fit p-2">
+                  <IconBrandInstagram />
+                </span>
+              </div>
+            </div>
+           
           </div>
         </motion.div>
       </div>
