@@ -10,7 +10,7 @@ const Blogs = () => {
       <motion.h1
         initial={{ opacity: 0, y: -15, filter: "blur(40px)" }}
         animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-        transition={{ delay: 0.4, duration: 0.6, ease: "easeInOut" }}
+        transition={{ delay: 0.8, duration: 0.6, ease: "easeInOut" }}
         className="text-3xl font-semibold"
       >
         My Writings 🖊️
@@ -18,7 +18,7 @@ const Blogs = () => {
       <motion.p
         initial={{ opacity: 0, y: -15, filter: "blur(40px)" }}
         animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-        transition={{ delay: 0.4, duration: 0.6, ease: "easeInOut" }}
+        transition={{ delay: 0.6, duration: 0.6, ease: "easeInOut" }}
         className="text-muted-foreground text-base my-4 w-2/3"
       >
         This is my writing area, I document all my learnings here. You can find
@@ -27,9 +27,12 @@ const Blogs = () => {
       </motion.p>
       <div className="posts">
         {featuredPosts.map((post) => (
-          <div
+          <motion.div
             className="my-3 transition-colors hover:bg-primary-foreground p-4 rounded-lg"
             key={post.slug}
+            initial={{ opacity: 0, y: -15, filter: "blur(40px)" }}
+            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            transition={{ delay: 0.6, duration: 0.6, ease: "easeInOut" }}
           >
             <Link
               href={`/blogs/${post.slug}`}
@@ -61,7 +64,7 @@ const Blogs = () => {
                 </ul>
               </div>
             </Link>
-          </div>
+          </motion.div>
         ))}
         <Link href="/blogs" className="underline-effect">More...</Link>
       </div>

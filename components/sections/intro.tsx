@@ -22,7 +22,7 @@ const Intro = () => {
           }}
           animate={{
             opacity: 1,
-            transition: { duration: 0.6, ease: "easeInOut" },
+            transition: { duration: 0.4, ease: "easeInOut" },
           }}
           className="hero mt-52 flex items-center gap-4"
         >
@@ -38,7 +38,7 @@ const Intro = () => {
               variants={titleVariant}
               initial="initial"
               animate="animate"
-              transition={{ duration: 0.6, ease: "easeInOut" }}
+              transition={{ duration: 0.4, ease: "easeInOut" }}
               className="text-2xl font-bold text-primary leading-tight"
             >
               Hello world 👋 I'm
@@ -47,7 +47,7 @@ const Intro = () => {
               variants={titleVariant}
               initial="initial"
               animate="animate"
-              transition={{ duration: 0.6, ease: "easeInOut" }}
+              transition={{ duration: 0.4, ease: "easeInOut" }}
               className="text-2xl sm:text-6xl lg:text-6xl font-bold text-primary tracking-tight"
             >
               Shaan Alam
@@ -56,7 +56,7 @@ const Intro = () => {
               variants={subtitleVariant}
               initial="initial"
               animate="animate"
-              transition={{ delay: 0.3, duration: 0.6, ease: "easeInOut" }}
+              transition={{ duration: 0.4, ease: "easeInOut" }}
               className="mt-4 text-muted-foreground text-base sm:text-xl w-3/4"
             >
               Full-Stack Developer crafting modern web apps and SaaS products —
