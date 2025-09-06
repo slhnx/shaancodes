@@ -1,0 +1,201 @@
+import CodeHeader from "../../../components/ui/code-header";
+
+![Cover Image](https://utfs.io/f/4HrWTRZRvKfTM0JtJ8HjzWfuEKe24YbqsIHgXm3PyVx1D8o6)
+
+## A little background
+
+If you have been coding for a while, you know the importance of environment variables and the role it plays, and also the pain of figuring out a bug which was caused just because a damn env variable wasn’t set in your project, lol!
+
+Earlier this year, I worked at an product based startup as a Full stack developer intern. As the project grew, the number of env variables also grew. And, everybody was working on separate features on separate branches, so we had no idea if someone introduced some new env variable in their branch which later got merged into the main branch. This created problems when I tried to deploy my branches, I had know idea that a new env var has been added to the the project.
+
+Then, later I got introduced to T3 stack and it had a brilliant solution for adding type safety to env variables. I didn’t even know such a solution even existed. It’s always feels good to learn something new when you least expect it. T3 stack uses `zod` and **`@t3-oss/env-nextjs`** package to add type safety to your applications which I liked very much. After that, I made a commitment to always type-safe my env variables no matter what.
+
+If you’re starting a new project, or already working in a team, I’d highly recommend you to please add type safety to your envs. Adding just this will save you your efforts for figuring out problems in your codebase.
+
+Here’ how you can add it to your project. It’s fairly simple.
+
+## What is zod?
+
+Zod is a lightweight, fast, schema declaration and validation library. A schema can be anything from a simple string, number to complex object type.
+
+### Basic usage
+
+<CodeHeader />
+```jsx import {z} from 'zod';
+
+const myBoolean = z.boolean();
+
+myBoolean.parse('true'); // throws error
+myBoolean.parse(true) // valid
+
+````
+
+### Creating a nested object schema
+
+<CodeHeader />
+```jsx
+import { z } from 'zod';
+
+const userSchema = z.object({
+	name: z.string(),
+	age: z.number(),
+	address: z.object({
+		house_no: z.string(),
+		locality: z.string(),
+		city: z.string(),
+		state: z.string(),
+	})
+});
+````
+
+You can create a simple object schema or create nested objects schema.
+
+## What is t3-oss/env-nextjs?
+
+It is simply a package which will help us add type safety to env variables
+
+## Let’s create type-safe env variables
+
+Create a `env.js` file at the root of your project.
+
+<CodeHeader />
+```jsx import {createEnv} from "@t3-oss/env-nextjs"; import {z} from "zod";
+
+export const env = createEnv({
+  /*
+   * Serverside Environment variables, not available on the client.
+   * Will throw if you access these variables on the client.
+   */
+  server: {
+    DB_URI: z.string().url(),
+  },
+  /*
+   * Environment variables available on the client (and server).
+   *
+   * You'll get type errors if these are not prefixed with NEXT_PUBLIC_.
+   */
+  client: {
+    NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY: z.string().min(1),
+  },
+  /*
+   * Due to how Next.js bundles environment variables on Edge and Client,
+   * we need to manually destructure them to make sure all are included in bundle.
+   *
+   * You'll get type errors if not all variables from `server` & `client` are included here.
+   */
+  runtimeEnv: {
+    DB_URI: process.env.DATABASE_URL,
+    NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY:
+      process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY,
+  },
+});
+```
+
+## Usage
+
+<CodeHeader />
+```jsx // some-file import {env} from '@/env';
+
+const CLERK_PUBLISHABLE_KEY = env.NEXT_PUBLISHABLE_KEY;
+
+````
+
+If you hover your cursor above `NEXT_PUBLISHABLE_KEY`, you can see that that value is typed as string, that means our env variables are typed now.
+
+We’ve added type safe env variables, but this will not run on every build time. we have to import our newly created file into our `next.config.js` file. You can use `unjs/jiti` package for that.
+
+First, install the jiti pacakge from npm.
+
+
+<CodeHeader />
+```jsx
+import { fileURLToPath } from "node:url";
+import createJiti from "jiti";
+const jiti = createJiti(fileURLToPath(import.meta.url));
+
+jiti("./app/env");
+````
+
+When working with `import.meta.url`, it provides the URL of the file you are currently working in. However, it includes a `file:///` prefix, which you might not want. To remove that prefix, you can use the `fileURLToPath` function from the `node:url` module.
+
+For example:
+
+<CodeHeader />
+```js import {fileURLToPath} from 'node:url';
+
+// Convert the file URL to a path
+const filename = fileURLToPath(import.meta.url);
+
+````
+
+Now, if you do not have the required env variables, you will see an error like this -
+
+![image.png](https://utfs.io/f/4HrWTRZRvKfTbZ9E2wq9SbO105WNdGp2Eg6novRlf4I3Tixk)
+
+## How to add type-safety to env variables in Node.js Projects?
+
+<CodeHeader />
+```jsx
+import dotenv from "dotenv";
+import { z } from "zod";
+
+dotenv.config();
+
+const schema = z.object({
+  MONGO_URI: z.string(),
+  PORT: z.coerce.number(),
+  JWT_SECRET: z.string(),
+  NODE_ENV: z
+    .enum(["development", "production", "test"])
+    .default("development"),
+});
+
+const parsed = schema.safeParse(process.env);
+
+if (!parsed.success) {
+  console.error(
+    "❌ Invalid environment variables:",
+    JSON.stringify(parsed.error.format(), null, 4)
+  );
+  process.exit(1);
+}
+
+export default parsed.data;
+
+```
+
+In Node.js projects we're going to be simply creating a zod schema and parsing it against our `process.env` in order to check whether all the env variables are set or not.
+
+### Usage
+
+<CodeHeader />
+```jsx
+// app.ts import express from "express"; import env from "./env";
+
+const app = express();
+const PORT = env.PORT || 5000; // PORT is type safe here....
+
+app.listen(PORT, () => {
+console.log(`Connected to server on PORT ${PORT}`);
+connectDB();
+});
+
+```
+
+That’s how you add type safety to your env variables. I hope you learnt something new in this tutorial.
+
+**Happy Coding!! 👋**
+
+export const metadata = {
+  title:
+    "Why you should always add type safety to your environment variables?",
+  publishDate: new Date("09/23/2023"),
+  slug: "whats-the-problem-with-not-adding-type-safety-to-your-env-variables",
+  tags: ["react", "nextjs"],
+  description: "Add type-safe env variables to your Next.js and Node.js Projects",
+  keywords: ["type safe", "environment variables", "typescript", "nextjs"],
+  openGraph: {
+    images: 'https://utfs.io/f/4HrWTRZRvKfTzl1YBMjBj5AfaG8CDPXYeUyOokwM6idmW7sb',
+  },
+};
+

@@ -1,0 +1,113 @@
+import CodeHeader from "../../../components/ui/code-header";
+
+![Understanding JavaScript Closures!](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/qve79b2wmdz89yw6c2iu.png)
+
+You might've heard about closures in JavaScript, but you don't actually know what it is or why it is used. In this blog I'll give details about closures that you need to know.
+
+## What are closures?
+
+As per the MDN docs,
+
+> A **closure** is the combination of a function bundled together (enclosed) with references to its surrounding state (the **lexical environment**)
+
+In other words, a closure gives you access the outer function's variables inside the inner function. Closures are created every time a function is created. Let's take a look at an example
+
+<CodeHeader />
+```js
+function sayHello(name) {
+  return function displayMessage() {
+    console.log(`Hello ${name}`);
+  };
+}
+
+const sayHelloToJohn = sayHello("John Doe");
+sayHelloToJohn(); // Hello John Doe
+
+````
+
+In the above example, I've created a function `sayHello` which takes a parameter `name`. This function returns another function which log the name(from outer function) to the console.
+
+So, What happens is that when we call the `sayHello` function, the inner function is returned and assigned to `sayHelloToJohn` and when we call this function, `Hello John Doe` is logged onto the console.
+
+But, you might be asking yourself that _isn't the validity of local variables inside function expires once the function is finished executing? So, how come this inner function lets you access the local variable of it's parent function?_
+
+The reason is functions in JavaScript form closures. A closure is a combination of function and lexical environment within which the function was created. This lexical environment consists of any local variables that were present at the time the closure was created.
+
+In this case, `sayHello` is a reference to the instance of the function `displayMessage` that is created when `sayHello` runs. This instance of `displayMessage` maintain a reference to its lexical environment within which the variable `name` exists. For this reason, when the inner function is called the variable `name` is available for use
+
+That's what closures is all about in JavaScript!
+
+## Another example
+
+Let's take a practical example to understand it better.
+
+<CodeHeader />
+```js
+function changeColor(color) {
+  return function () {
+    document.getElementById("btn").style.backgroundColor = color;
+  };
+}
+
+const changeColorToBlue = changeColor("blue");
+const changeColorToRed = changeColor("red");
+````
+
+In this example, we create a `changeColor` function that accepts a `color` parameter and returns a function which changes the background color of the button.
+
+`changeColorToBlue` and `changeColorToRed` are now functions which when invoked will change the background color of the button to the respective argument passed to the `changeColor` function.
+
+## Private methods with closures
+
+Closures can help you to actually emulate private methods. This could help in restricting access to variables or methods.
+The following example below demonstrates how public function access private members.
+
+<CodeHeader />
+```js
+const createCounter = function (initialValue) {
+  let counterVar = 0;
+
+  function increment() {
+    counterVar = counterVar + 1;
+  }
+
+  function decrement() {
+    counterVar = counterVar - 1;
+  }
+
+  function getCounter() {
+    return counterVar;
+  }
+
+  return { increment, decrement, getCounter };
+};
+
+const counter = createCounter(0);
+console.log(counter.getCounter()); // 0
+counter.increment();
+counter.increment();
+
+console.log(counter.getCounter()); // 2
+
+counter.decrement();
+console.log(counter.getCounter()); // 1
+```
+
+## Conclusion
+
+That's all about closures in short. In case you want to dig deeper, you can also refer to the [MDN Docs](https://developer.mozilla.org/en-US/)
+
+### My Socials
+
+Twitter - [shaancodes](https://twitter.com/shaancodes)
+
+Instagram - [shaancodes](https://www.instagram.com/shaancodes/)
+
+GitHub - [shaancodes](https://github.com/shaan-alam/)
+
+export const metadata = {
+  title: "Understanding JavaScript Closures!",
+  publishDate: new Date("09/14/2023"),
+  slug: "understanding-javascript-closures",
+  tags: ["javascript", "webdev", "react", "programming"],
+};

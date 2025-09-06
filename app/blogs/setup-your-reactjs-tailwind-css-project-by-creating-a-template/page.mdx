@@ -1,0 +1,180 @@
+import CodeHeader from "../../../components/ui/code-header";
+
+Hey, Shaan here!
+As we all know that tailwind CSS is gaining popularity nowadays, so I decided to give a shot and learn tailwind css. After learning a little bit and creating a landing page with tailwind, I found it awesome and decided to use tailwind for my future React projects. But hey! configuring Tailwind with React is not an easy task. So, I thought why not create a template repository so that beginner ReactJS developers can use to quickly configure their projects. In this article, I will show exactly how to configure your ReactJS + tailwind css project & also how to create a template repository which you can use.
+
+# Creating a react app
+
+Start by creating a new react app if you haven't already by typing using create-react-app.
+
+<CodeHeader />
+```bash
+npx create-react-app cra-tailwind-template
+cd cra-tailwind-template
+```
+
+# Setting up Tailwind CSS
+
+Install Tailwind CSS by typing -
+
+<CodeHeader />
+```bash
+npm install tailwindcss@npm:@tailwindcss/postcss7-compat @tailwindcss/postcss7-compat postcss@^7 autoprefixer@^9
+```
+
+### Configure Craco
+
+Install and configure craco by typing -
+
+<CodeHeader />
+```bash
+npm install @craco/craco
+```
+
+Once it is installed, edit your 'scripts' section of your **package.json** file.
+
+<CodeHeader />
+```json
+"scripts": {
+    "start": "craco start",
+    "build": "craco build",
+    "test": "craco test",
+    "eject": "react-scripts eject"
+  },
+```
+
+Next, we need to create a craco.config.js file at the root of your project and add the **tailwindcss** and **autoprefixer** as PostCSS Plugins.
+
+<CodeHeader />
+```javascript
+module.exports = {
+  style: {
+    postcss: {
+      plugins: [require("tailwindcss"), require("autoprefixer")],
+    },
+  },
+};
+```
+
+### Creating configuration file
+
+Next, we have to generate our **tailwind.config.js** file like this -
+
+<CodeHeader />
+```bash 
+npx tailwind init 
+```
+
+This will create a **tailwind.config.js** file at the root of your project.
+
+### Edit tailwind.config.js file
+
+Next, we have to edit our tailwind.config.js file. Configure 'purge' option with the paths of your components so that any unused styles in the production builds.
+
+<CodeHeader />
+```javascript
+module.exports = {
+  purge: ["./src/**/*.{js,jsx,ts,tsx}", "./public/index.html"],
+  darkMode: false,
+  theme: {
+    extend: {},
+  },
+  variants: {
+    extend: {},
+  },
+  plugins: [],
+};
+```
+
+### Include Tailwind in your CSS
+
+Open **src/index.css** and include the following by using the @tailwind directive.
+
+<CodeHeader />
+```css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
+
+Finally include your **index.css** in your **src/index.css** file.
+
+<CodeHeader />
+```javascript
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css"; // include index.css
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+
+ReactDOM.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById("root")
+);
+```
+
+And that's it. This is how we configure ReactJS with Tailwind CSS.
+
+# Final Part - Creating a template repo for later use
+
+In this section, I'll show you how to create a template repo which you can use in future so that you won't have to setup from the scratch.
+
+### Initialize a git repository.
+
+Type the following command to create an empty git repo.
+
+<CodeHeader />
+```bash
+git init
+```
+
+### Commit changes
+
+Add the files to the staging area, and the commit the changes.
+
+<CodeHeader />
+```bash
+git add .
+git commit -m 'initial commit'
+```
+
+### Moving code to GitHub.
+
+Log into your GitHub account and create a new repo y click the **"+"** icon on the top right hand corner. Provide a name for your repo (for example - react-tailwind-template)
+![Alt Text](https://dev-to-uploads.s3.amazonaws.com/i/we00d6cs1r4d4751qqj3.png)
+![Alt Text](https://dev-to-uploads.s3.amazonaws.com/i/r2qpxo9tyoi7rrxyq9mk.png)
+After giving name, you will see something like this.
+![Alt Text](https://dev-to-uploads.s3.amazonaws.com/i/4ise4saflx7q4rizo0pn.png)
+Now, type the following commands in your terminal
+
+<CodeHeader />
+```git
+git remote add origin https://github.com/shaan71845/react-tailwind-template.git
+git push -u origin main
+```
+
+You have successfully uploaded your code on GitHub!!
+
+# Creating template
+
+After following the above steps, you will be redirected to your repo. Click on the **Settings** tab and check the **Template repository** option.
+![Alt Text](https://dev-to-uploads.s3.amazonaws.com/i/r8tdvn907ekbwqbe5o2i.png)
+![Alt Text](https://dev-to-uploads.s3.amazonaws.com/i/0cak77kmjyc3p53uxtpn.png)
+
+# OR
+
+You can use my Template repo to configure your ReactJS + Tailwind CSS Project.
+Link 👇
+[https://github.com/shaan71845/cra-tailwind-template](https://github.com/shaan71845/cra-tailwind-template)
+
+Cick on **Use as template** to use this template.
+Feel free to leave a ⭐
+
+export const metadata = {
+  title: "Setup your ReactJS + Tailwind CSS Project by creating a template 🔥",
+  publishDate: new Date("2/3/2021"),
+  slug: "setup-your-reactjs-tailwind-css-project-by-creating-a-template",
+  tags: [],
+};
