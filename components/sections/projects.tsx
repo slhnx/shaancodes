@@ -6,7 +6,7 @@ import { AnimatedGroup } from "../ui/animated-group";
 
 const Projects = () => {
   return (
-    <div className="my-12 w-[60%] mx-auto">
+    <div className="my-12 w-[40%] mx-auto">
       <motion.h1
         initial={{ opacity: 0, y: -15, filter: "blur(40px)" }}
         animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}

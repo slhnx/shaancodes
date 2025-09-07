@@ -1,20 +1,7 @@
 "use client";
-import { skills, socials } from "@/data";
+import { socials } from "@/data";
 import { motion } from "motion/react";
 import Image from "next/image";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "../ui/tooltip";
-import { Badge } from "../ui/badge";
-import {
-  IconBrandGithub,
-  IconBrandInstagram,
-  IconBrandLinkedin,
-  IconBrandX,
-} from "@tabler/icons-react";
 
 const titleVariant = {
   initial: { opacity: 0, y: -15, filter: "blur(40px)" },
@@ -29,7 +16,7 @@ const subtitleVariant = {
 const Intro = () => {
   return (
     <motion.div>
-      <div className="w-[60%] mx-auto">
+      <div className="w-[40%] mx-auto">
         <motion.div
           initial={{
             opacity: 0,
@@ -71,7 +58,7 @@ const Intro = () => {
               initial="initial"
               animate="animate"
               transition={{ duration: 0.4, ease: "easeInOut" }}
-              className="mt-4 text-muted-foreground text-base sm:text-xl w-3/4"
+              className="mt-4 text-muted-foreground text-base sm:text-xl w-full"
             >
               Full-Stack Developer crafting modern web apps and SaaS products —
               sharing my journey, projects, and insights online.
@@ -79,7 +66,10 @@ const Intro = () => {
             <div className="mt-4">
               <div className="flex gap-3 mt-4">
                 {socials.map((social) => (
-                  <span className="text-neutral-400 cursor-pointer transition-all hover:text-neutral-100 hover:bg-secondary rounded-full w-fit p-2">
+                  <span
+                    key={social.link}
+                    className="text-neutral-400 cursor-pointer transition-all hover:text-neutral-100 hover:bg-secondary rounded-full w-fit p-2"
+                  >
                     <social.icon />
                   </span>
                 ))}
