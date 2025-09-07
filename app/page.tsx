@@ -3,6 +3,7 @@ import Intro from "@/components/sections/intro";
 import Blogs from "@/components/sections/blogs";
 import { motion } from "motion/react";
 import Projects from "@/components/sections/projects";
+import MySkills from "@/components/sections/my-skills";
 
 const blurVariants = {
   initial: { opacity: 0, scale: 0.8, rotate: 0 },
@@ -71,6 +72,7 @@ const Page = () => {
         />
       </motion.div>
       <Intro />
+      <MySkills />
       <Projects />
       <Blogs />
     </main>

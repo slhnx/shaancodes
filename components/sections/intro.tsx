@@ -92,7 +92,6 @@ const Intro = () => {
                 </span>
               </div>
             </div>
-           
           </div>
         </motion.div>
       </div>

@@ -36,14 +36,11 @@ const Navbar = () => {
   ];
 
   return (
-    <NavWrapper>
-      <NavBody>
+    <NavWrapper className="w-[60%] mx-auto">
+      <NavBody className="relatize z-50">
         <NavbarLogo />
-        <NavItems items={navItems} />
-        <div className="flex items-center gap-4">
-          <NavbarButton variant="secondary">Login</NavbarButton>
-          <NavbarButton variant="primary">Book a call</NavbarButton>
-        </div>
+        <ThemeToggle />
+        <NavItems className="ml-auto" items={navItems} />
       </NavBody>
       <MobileNav>
         <MobileNavHeader>
@@ -68,22 +65,6 @@ const Navbar = () => {
               <span className="block">{item.name}</span>
             </a>
           ))}
-          <div className="flex w-full flex-col gap-4">
-            <NavbarButton
-              onClick={() => setIsMobileMenuOpen(false)}
-              variant="primary"
-              className="w-full"
-            >
-              Login
-            </NavbarButton>
-            <NavbarButton
-              onClick={() => setIsMobileMenuOpen(false)}
-              variant="primary"
-              className="w-full"
-            >
-              Book a call
-            </NavbarButton>
-          </div>
         </MobileNavMenu>
       </MobileNav>
     </NavWrapper>
