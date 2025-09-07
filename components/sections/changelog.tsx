@@ -40,7 +40,7 @@ const Changelog = () => {
               <h2 className="text-2xl font-semibold">{changelog.year}</h2>
               <div>
                 {changelog.events.map((event) => (
-                  <div className="my-4 px-3 py-4 border-b">
+                  <div className="my-4 px-3 py-4 border-b" key={event.title}>
                     <h3 className="text-lg font-semibold flex gap-x-4">
                       <span>
                         <Image
