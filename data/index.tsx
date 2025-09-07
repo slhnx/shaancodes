@@ -1,3 +1,10 @@
+import {
+  IconBrandGithub,
+  IconBrandInstagram,
+  IconBrandLinkedin,
+  IconBrandTwitter,
+} from "@tabler/icons-react";
+
 export const featuredPosts = [
   {
     title: "How to learn React - The effective way",
@@ -122,9 +129,25 @@ export const skills = [
   },
 ];
 
-export const social_links = {
-  twitter: "https://x.com/shaancodes_",
-  github: "https://github.com/slhxn",
-  linkedin: "https://linkedin.com/in/shaan-alam",
-  instagram: "https://instagram.com/shaancodes",
-};
+export const socials = [
+  {
+    icon: IconBrandTwitter,
+    link: "https://twitter.com/shaancodes_",
+    label: "Twitter",
+  },
+  {
+    icon: IconBrandGithub,
+    link: "https://github.com/slhxn",
+    label: "Github",
+  },
+  {
+    icon: IconBrandLinkedin,
+    link: "https://linkedin.com/in/shaan-alam",
+    label: "Linkedin",
+  },
+  {
+    icon: IconBrandInstagram,
+    link: "https://instagram.com/shaancodes",
+    label: "Instagram",
+  },
+];

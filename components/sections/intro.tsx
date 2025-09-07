@@ -1,5 +1,5 @@
 "use client";
-import { skills } from "@/data";
+import { skills, socials } from "@/data";
 import { motion } from "motion/react";
 import Image from "next/image";
 import {
@@ -76,20 +76,13 @@ const Intro = () => {
               Full-Stack Developer crafting modern web apps and SaaS products —
               sharing my journey, projects, and insights online.
             </motion.div>
-            <div className="mt-6">
+            <div className="mt-4">
               <div className="flex gap-3 mt-4">
-                <span className="cursor-pointer transition-all hover:scale-110 hover:bg-secondary rounded-full w-fit p-2">
-                  <IconBrandX />
-                </span>
-                <span className="cursor-pointer transition-all hover:scale-110 hover:bg-secondary rounded-full w-fit p-2">
-                  <IconBrandGithub />
-                </span>
-                <span className="cursor-pointer transition-all hover:scale-110 hover:bg-secondary rounded-full w-fit p-2">
-                  <IconBrandLinkedin />
-                </span>
-                <span className="cursor-pointer transition-all hover:scale-110 hover:bg-secondary rounded-full w-fit p-2">
-                  <IconBrandInstagram />
-                </span>
+                {socials.map((social) => (
+                  <span className="text-neutral-400 cursor-pointer transition-all hover:text-neutral-100 hover:bg-secondary rounded-full w-fit p-2">
+                    <social.icon />
+                  </span>
+                ))}
               </div>
             </div>
           </div>
