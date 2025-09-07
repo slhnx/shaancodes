@@ -3,8 +3,11 @@ import { featuredPosts } from "@/data";
 import { format } from "date-fns";
 import { motion } from "motion/react";
 import Link from "next/link";
+import { useState } from "react";
 
 const Blogs = () => {
+  const [hovered, setHovered] = useState<number | null>(null);
+
   return (
     <div className="my-12 w-[40%] mx-auto">
       <motion.h1
@@ -25,15 +28,22 @@ const Blogs = () => {
         code snippets, blogs on technologies or in general what I think about
         programming here.
       </motion.p>
-      <div className="posts">
-        {featuredPosts.map((post) => (
+      <div className="posts" onMouseLeave={() => setHovered(null)}>
+        {featuredPosts.map((post, idx) => (
           <motion.div
-            className="my-3 transition-colors hover:bg-primary-foreground p-4 rounded-lg"
+            onMouseEnter={() => setHovered(idx)}
+            className="my-3 transition-colors p-4 rounded-lg"
             key={post.slug}
             initial={{ opacity: 0, y: -15, filter: "blur(40px)" }}
             animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             transition={{ delay: 0.6, duration: 0.6, ease: "easeInOut" }}
           >
+            {hovered === idx && (
+              <motion.div
+                layoutId="hovered"
+                className="absolute inset-0 -z-10 h-full w-full rounded-md bg-gray-100 dark:bg-neutral-900"
+              />
+            )}
             <Link
               href={`/blogs/${post.slug}`}
               key={post.slug}
@@ -66,7 +76,9 @@ const Blogs = () => {
             </Link>
           </motion.div>
         ))}
-        <Link href="/blogs" className="underline-effect">More...</Link>
+        <Link href="/blogs" className="underline-effect">
+          More...
+        </Link>
       </div>
     </div>
   );
