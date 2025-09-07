@@ -151,3 +151,132 @@ export const socials = [
     label: "Instagram",
   },
 ];
+
+export const lifeChangelog = [
+  {
+    year: "2002",
+    events: [
+      {
+        date: "Oct, 2002",
+        title: "Hello World 🌍",
+        description: "I was born and began my journey.",
+      },
+    ],
+  },
+  {
+    year: "2016",
+    events: [
+      {
+        title: "First Line of Code 💻",
+        description:
+          "In 8th grade, I wrote my very first HTML page—marking the start of my web development journey.",
+      },
+    ],
+  },
+  {
+    year: "2016 – 2018",
+    events: [
+      {
+        title: "Early Struggles ⚡",
+        description:
+          "From 8th to 10th grade, I kept experimenting with web dev but often got stuck and struggled to make real progress.",
+      },
+    ],
+  },
+  {
+    year: "2018",
+    events: [
+      {
+        title: "Milestone Achieved 🎓",
+        description: "Successfully completed my 10th grade.",
+      },
+    ],
+  },
+  {
+    year: "2019",
+    events: [
+      {
+        title: "React Enters the Chat ⚛️",
+        description:
+          "In 11th grade, I discovered React and started building small projects with it.",
+      },
+    ],
+  },
+  {
+    year: "2020",
+    events: [
+      {
+        title: "Breaking Free 🚀",
+        description:
+          "During COVID, I dedicated serious time to web dev, got out of tutorial hell, and started building real projects.",
+      },
+      {
+        title: "Level Up 📖",
+        description: "Successfully completed my 12th grade.",
+      },
+      {
+        title: "A New Chapter 🎓",
+        description:
+          "Admitted to Shivaji College, University of Delhi to pursue graduation.",
+      },
+    ],
+  },
+  {
+    year: "2023",
+    events: [
+      {
+        title: "Graduated 🎉",
+        description: "Successfully completed my graduation journey.",
+      },
+      {
+        date: "Aug 2023 – Feb 2024",
+        title: "First Professional Gig 💻",
+        description:
+          "Worked as a Full Stack Developer at Metaverse Ventures, building and shipping real-world projects.",
+      },
+    ],
+  },
+  {
+    year: "2024",
+    events: [
+      {
+        date: "Apr 2024 – Sept 2024",
+        title: "Next Adventure ⚡",
+        description:
+          "Joined ITechMentor as a Full Stack Developer and honed my skills through impactful projects.",
+      },
+      {
+        date: "Nov 2024 – Jun 2025",
+        title: "Focused Grind 📚",
+        description:
+          "Dedicated myself to preparing for the NIMCET entrance exam.",
+      },
+    ],
+  },
+  {
+    year: "2025",
+    events: [
+      {
+        date: "Jun 2025 – Jul 2025",
+        title: "Victory Unlocked 🏆",
+        description:
+          "Cracked NIMCET and secured admission to pursue MCA at NIT Raipur.",
+      },
+    ],
+  },
+  {
+    year: "Future",
+    events: [
+      {
+        title: "Dream SaaS Launch 🚀",
+        description:
+          "Building and launching my own SaaS product to solve real-world problems.",
+      },
+      {
+        title: "Dream Role 🌟",
+        description:
+          "Joining a leading tech company as a Senior Engineer and contributing to impactful projects.",
+      },
+    ],
+  },
+];
