@@ -14,7 +14,7 @@ const MySkills = () => {
       >
         Skills
       </motion.h1>
-      <div>
+      <div className="my-4">
         <AnimatedGroup
           className="flex gap-4"
           variants={{
