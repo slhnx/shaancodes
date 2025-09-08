@@ -2,6 +2,7 @@
 import { socials } from "@/data";
 import { motion } from "motion/react";
 import Image from "next/image";
+import { useState } from "react";
 
 const titleVariant = {
   initial: { opacity: 0, y: -15, filter: "blur(40px)" },
@@ -14,6 +15,8 @@ const subtitleVariant = {
 };
 
 const Intro = () => {
+  const [hovered, setHovered] = useState<number | null>(null);
+
   return (
     <motion.div>
       <div className="w-[40%] mx-auto">
@@ -64,14 +67,26 @@ const Intro = () => {
               sharing my journey, projects, and insights online.
             </motion.div>
             <div className="mt-4">
-              <div className="flex gap-3 mt-4">
-                {socials.map((social) => (
-                  <span
+              <div
+                className="flex gap-3 mt-4"
+                onMouseLeave={() => setHovered(null)}
+              >
+                {socials.map((social, idx) => (
+                  <div
                     key={social.link}
-                    className="text-neutral-400 cursor-pointer transition-all hover:text-neutral-100 hover:bg-secondary rounded-full w-fit p-2"
+                    className="block relative"
+                    onMouseEnter={() => setHovered(idx)}
                   >
-                    <social.icon />
-                  </span>
+                    {hovered === idx && (
+                      <motion.div
+                        layoutId="hovered"
+                        className="absolute top-[50%] -translate-y-[50%] left-1/2 -translate-x-1/2 -z-10 h-fit w-full p-4 rounded-md bg-gray-100 dark:bg-neutral-900"
+                      />
+                    )}
+                    <span className="text-neutral-400 cursor-pointer transition-all rounded-full w-fit p-2">
+                      <social.icon size={25} />
+                    </span>
+                  </div>
                 ))}
               </div>
             </div>
