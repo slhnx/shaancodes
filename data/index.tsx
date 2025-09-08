@@ -280,3 +280,41 @@ export const lifeChangelog = [
     ],
   },
 ];
+
+export const experiences = {
+  workExperiences: [
+    {
+      company: "ITechMentor",
+      companyLogo:
+        "https://y4cpsre1ob.ufs.sh/f/4HrWTRZRvKfT5y4A0zPISZGOWz0R1UaXk3pHcEJVumQsTqNn",
+      location: "Navi Mumbai, Maharashtra",
+      type: "Remote",
+      role: "Full Stack Developer Intern",
+      startDate: "April 2024",
+      endDate: "Present",
+      responsibilities: [
+        "Developed a comprehensive ERP application tailored for small and medium-sized businesses, utilizing the MERN stack (MongoDB, Express, React, Node.js).",
+        "Implemented Lead Management feature which tracks and manages potential customers, helping to capture information and move leads through the sales pipeline.",
+        "Implemented HR Tasks feature which handles employee onboarding, attendance, leave management, and performance evaluations to streamline HR processes.",
+        "Implemented Organization Management: Manages company structure, roles, and responsibilities to maintain organizational clarity.",
+      ],
+    },
+    {
+      company: "Metaverse Ventures",
+      companyLogo:
+        "https://y4cpsre1ob.ufs.sh/f/4HrWTRZRvKfTduykZkOQxiyuI6KZR7Wv8ESzp3Cc1grd2akX",
+      location: "Hyderabad, Telangana",
+      type: "Remote",
+      role: "Full Stack Developer Intern",
+      startDate: "October 2023",
+      endDate: "February 2024",
+      responsibilities: [
+        "Worked on a SaaS product using Next.js, TypeScript, and Postgres, deployed on Vercel.",
+        "Developed live collaborative document editing features using Tiptap and Liveblocks.",
+        "Built a collaborative whiteboard with React-Konva and added real-time collaboration using Liveblocks.",
+        "Implemented workspace sharing and invite options to facilitate team collaboration.",
+        "Designed and managed the folder and file management system within the SaaS product for efficient content organization.",
+      ],
+    },
+  ],
+};

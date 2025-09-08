@@ -5,6 +5,7 @@ import { motion } from "motion/react";
 import Projects from "@/components/sections/projects";
 import MySkills from "@/components/sections/my-skills";
 import Changelog from "@/components/sections/changelog";
+import Experiences from "@/components/sections/experience";
 
 const blurVariants = {
   initial: { opacity: 0, scale: 0.8, rotate: 0 },
@@ -75,6 +76,7 @@ const Page = () => {
       <Intro />
       <MySkills />
       <Projects />
+      <Experiences />
       <Blogs />
       <Changelog />
     </main>
