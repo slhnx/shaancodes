@@ -36,7 +36,7 @@ const Page = () => {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        className="bg-blurs flex flex-col items-end absolute -right-32 sm:-right-60 top-0 blur-xl -z-10"
+        className="bg-blurs absolute flex flex-col items-end -right-32 sm:-right-60 top-0 blur-xl -z-10"
       >
         <motion.div
           variants={blurVariants}

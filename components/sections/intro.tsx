@@ -32,8 +32,8 @@ const Intro = () => {
         >
           <Image
             src="/me.jpg"
-            height={200}
-            width={200}
+            height={250}
+            width={250}
             alt="Shaan Alam"
             className="rounded-xl transition-transform hover:scale-105 hover:-rotate-[5deg]"
           />

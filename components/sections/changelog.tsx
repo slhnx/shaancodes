@@ -5,15 +5,26 @@ import { InView } from "../ui/in-view";
 
 const Changelog = () => {
   return (
-    <div className="my-12 w-[40%] mx-auto">
-      <motion.h1
-        initial={{ opacity: 0, y: -15, filter: "blur(40px)" }}
-        animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-        transition={{ delay: 0.4, duration: 0.4, ease: "easeInOut" }}
-        className="text-3xl font-semibold"
-      >
-        Life Changelog
-      </motion.h1>
+    <div className="my-32 w-[40%] mx-auto">
+      <div className="text-center mb-16">
+        <motion.h1
+          initial={{ opacity: 0, y: -15, filter: "blur(40px)" }}
+          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          transition={{ delay: 0.4, duration: 0.4, ease: "easeInOut" }}
+          className="text-3xl font-semibold"
+        >
+          Life Changelog
+        </motion.h1>
+        <motion.p
+          initial={{ opacity: 0, y: -15, filter: "blur(40px)" }}
+          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          transition={{ delay: 0.4, duration: 0.6, ease: "easeInOut" }}
+          className="text-lg text-muted-foreground max-w-2xl mx-auto"
+        >
+          A timeline of milestones, struggles, and breakthroughs that shaped my
+          journey as a developer.
+        </motion.p>
+      </div>
       <div className="mt-6">
         {lifeChangelog.map((changelog) => (
           <InView

@@ -10,24 +10,26 @@ const Blogs = () => {
 
   return (
     <div className="my-12 w-[40%] mx-auto">
-      <motion.h1
-        initial={{ opacity: 0, y: -15, filter: "blur(40px)" }}
-        animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-        transition={{ delay: 0.8, duration: 0.6, ease: "easeInOut" }}
-        className="text-3xl font-semibold"
-      >
-        My Writings 🖊️
-      </motion.h1>
-      <motion.p
-        initial={{ opacity: 0, y: -15, filter: "blur(40px)" }}
-        animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-        transition={{ delay: 0.6, duration: 0.6, ease: "easeInOut" }}
-        className="text-muted-foreground text-base my-4 w-2/3"
-      >
-        This is my writing area, I document all my learnings here. You can find
-        code snippets, blogs on technologies or in general what I think about
-        programming here.
-      </motion.p>
+      <div className="text-center mb-16">
+        <motion.h1
+          initial={{ opacity: 0, y: -15, filter: "blur(40px)" }}
+          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          transition={{ delay: 0.8, duration: 0.6, ease: "easeInOut" }}
+          className="text-4xl font-bold text-foreground mb-4"
+        >
+          My Writings 🖊️
+        </motion.h1>
+        <motion.p
+          initial={{ opacity: 0, y: -15, filter: "blur(40px)" }}
+          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          transition={{ delay: 0.6, duration: 0.6, ease: "easeInOut" }}
+          className="text-lg text-muted-foreground max-w-2xl mx-auto"
+        >
+          This is my writing area, I document all my learnings here. You can
+          find code snippets, blogs on technologies or in general what I think
+          about programming here.
+        </motion.p>
+      </div>
       <div className="posts" onMouseLeave={() => setHovered(null)}>
         {featuredPosts.map((post, idx) => (
           <motion.div

@@ -17,7 +17,7 @@ const Experiences = () => {
 
       <div className="space-y-8 w-[40%] mx-auto">
         {experiences.workExperiences.map((experience, index) => (
-          <div key={index} className="border rounded-lg bg-background p-8 shadow-sm hover:shadow-md transition-all duration-300">
+          <div key={index} className="border rounded-lg bg-gradient-to-r from:bg-background to-transparent backdrop-blur-3xl p-8 shadow-sm hover:shadow-md transition-all duration-300"> 
             {/* Company Header */}
             <div className="flex items-start gap-4 mb-6">
               <img
