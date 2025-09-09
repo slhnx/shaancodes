@@ -19,7 +19,7 @@ const Intro = () => {
 
   return (
     <motion.div>
-      <div className="w-[40%] mx-auto">
+      <div className="w-[80%] xl:w-[50%] mx-auto">
         <motion.div
           initial={{
             opacity: 0,
@@ -28,7 +28,7 @@ const Intro = () => {
             opacity: 1,
             transition: { duration: 0.4, ease: "easeInOut" },
           }}
-          className="hero mt-52 flex items-center gap-4"
+          className="hero mt-52 flex flex-col md:flex-row items-center gap-4"
         >
           <Image
             src="/me.jpg"
@@ -43,7 +43,7 @@ const Intro = () => {
               initial="initial"
               animate="animate"
               transition={{ duration: 0.4, ease: "easeInOut" }}
-              className="text-2xl font-bold text-primary leading-tight"
+              className="text-2xl font-bold text-primary leading-tight text-center md:text-left"
             >
               Hello world 👋 I'm
             </motion.h4>
@@ -52,7 +52,7 @@ const Intro = () => {
               initial="initial"
               animate="animate"
               transition={{ duration: 0.4, ease: "easeInOut" }}
-              className="text-2xl sm:text-6xl lg:text-6xl font-bold text-primary tracking-tight"
+              className="text-2xl md:text-4xl xl:text-5xl font-bold text-primary tracking-tight text-center md:text-left"
             >
               Shaan Alam
             </motion.h1>
@@ -61,14 +61,14 @@ const Intro = () => {
               initial="initial"
               animate="animate"
               transition={{ duration: 0.4, ease: "easeInOut" }}
-              className="mt-4 text-muted-foreground text-base sm:text-xl w-full"
+              className="mt-4 text-muted-foreground text-base md:text-xl w-full text-center md:text-left"
             >
               Full-Stack Developer crafting modern web apps and SaaS products —
               sharing my journey, projects, and insights online.
             </motion.div>
-            <div className="mt-4">
+            <div className="mt-4 w-full">
               <div
-                className="flex gap-3 mt-4"
+                className="flex justify-center md:justify-start gap-3 mt-4"
                 onMouseLeave={() => setHovered(null)}
               >
                 {socials.map((social, idx) => (
