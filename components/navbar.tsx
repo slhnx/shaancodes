@@ -36,7 +36,7 @@ const Navbar = () => {
   ];
 
   return (
-    <NavWrapper className="w-[60%] mx-auto">
+    <NavWrapper className="md:w-[80%] xl:w-[50%] mx-auto">
       <NavBody className="relatize z-50">
         <NavbarLogo />
         <ThemeToggle />
@@ -65,6 +65,7 @@ const Navbar = () => {
               <span className="block">{item.name}</span>
             </a>
           ))}
+          <ThemeToggle />
         </MobileNavMenu>
       </MobileNav>
     </NavWrapper>
