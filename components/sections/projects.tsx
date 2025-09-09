@@ -9,8 +9,8 @@ const Projects = () => {
   const [hovered, setHovered] = useState<number | null>(null);
 
   return (
-    <section className="my-12 w-[40%] mx-auto">
-      <div className="text-center mb-16">
+    <section className="my-12 w-[80%] xl:w-[50%] mx-auto">
+      <div className="mb-16">
         <motion.h1
           initial={{ opacity: 0, y: -15, filter: "blur(40px)" }}
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
@@ -23,7 +23,7 @@ const Projects = () => {
           initial={{ opacity: 0, y: -15, filter: "blur(40px)" }}
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           transition={{ delay: 0.4, duration: 0.6, ease: "easeInOut" }}
-          className="text-lg text-muted-foreground max-w-2xl mx-auto"
+          className="text-lg text-muted-foreground max-w-2xl"
         >
           A collection of things I&apos;ve built — from small experiments to
           full-fledged applications.
@@ -31,7 +31,7 @@ const Projects = () => {
       </div>
       <div className="posts" onMouseLeave={() => setHovered(null)}>
         <AnimatedGroup
-          className="flex gap-4 h-fit"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 h-fit"
           variants={{
             container: {
               hidden: { opacity: 0, y: -15, filter: "blur(40px)" },
@@ -61,7 +61,7 @@ const Projects = () => {
           }}
         >
           {projects.map((project, idx) => (
-            <div>
+            <div className="w-full">
               {hovered === idx && (
                 <motion.div
                   layoutId="hovered"
@@ -71,7 +71,7 @@ const Projects = () => {
               <div
                 onMouseEnter={() => setHovered(idx)}
                 key={project.title}
-                className="grayscale w-full hover:grayscale-0 relative hover:shadow-2xl border border-border rounded-md p-4 overflow-hidden [&>div]:hover:grayscale-0 transition-all duration-500"
+                className="w-full relative hover:shadow-2xl border border-border rounded-md p-4 overflow-hidden [&>div]:hover:grayscale-0 transition-all duration-500"
               >
                 <div className="relative">
                   <img
