@@ -1,24 +1,37 @@
 import { experiences } from "@/data";
 import { Badge } from "@/components/ui/badge";
 import { MapPin, Calendar } from "lucide-react";
+import { motion } from "motion/react";
 
 const Experiences = () => {
   return (
-    <section className="py-20 px-6 mx-auto">
-      <div className="text-center mb-16">
-        <h2 className="text-4xl font-bold text-foreground mb-4">
+    <section className="my-32 w-[80%] xl:w-[50%] mx-auto">
+      <div className="mb-16">
+        <motion.h1
+          initial={{ opacity: 0, y: -15, filter: "blur(40px)" }}
+          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          transition={{ delay: 0.4, duration: 0.6, ease: "easeInOut" }}
+          className="text-4xl font-bold text-foreground mb-4"
+        >
           Work Experience
-        </h2>
-        <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-          My professional journey as a Full Stack Developer, building innovative solutions
-          and contributing to impactful projects.
-        </p>
+        </motion.h1>
+        <motion.p
+          initial={{ opacity: 0, y: -15, filter: "blur(40px)" }}
+          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          transition={{ delay: 0.4, duration: 0.6, ease: "easeInOut" }}
+          className="text-lg text-muted-foreground max-w-2xl"
+        >
+          My professional journey as a Full Stack Developer, building innovative
+          solutions and contributing to impactful projects.
+        </motion.p>
       </div>
 
-      <div className="space-y-8 w-[40%] mx-auto">
+      <div className="space-y-8 w-full mx-auto">
         {experiences.workExperiences.map((experience, index) => (
-          <div key={index} className="border rounded-lg bg-gradient-to-r from:bg-background to-transparent backdrop-blur-3xl p-8 shadow-sm hover:shadow-md transition-all duration-300"> 
-            {/* Company Header */}
+          <div
+            key={index}
+            className="border w-full rounded-lg bg-gradient-to-r from:bg-background to-transparent backdrop-blur-3xl p-8 shadow-sm hover:shadow-md transition-all duration-300"
+          >
             <div className="flex items-start gap-4 mb-6">
               <img
                 src={experience.companyLogo}
@@ -37,9 +50,7 @@ const Experiences = () => {
                     <MapPin className="w-3 h-3 mr-1" />
                     {experience.location}
                   </Badge>
-                  <Badge variant="outline">
-                    {experience.type}
-                  </Badge>
+                  <Badge variant="outline">{experience.type}</Badge>
                 </div>
               </div>
             </div>

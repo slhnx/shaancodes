@@ -9,7 +9,7 @@ const Projects = () => {
   const [hovered, setHovered] = useState<number | null>(null);
 
   return (
-    <section className="my-12 w-[80%] xl:w-[50%] mx-auto">
+    <section className="my-32 w-[80%] xl:w-[50%] mx-auto">
       <div className="mb-16">
         <motion.h1
           initial={{ opacity: 0, y: -15, filter: "blur(40px)" }}
