@@ -36,7 +36,7 @@ const Navbar = () => {
   ];
 
   return (
-    <NavWrapper className="md:w-[80%] xl:w-[50%] mx-auto">
+    <NavWrapper className="w-[80%] xl:w-[50%] mx-auto">
       <NavBody className="relatize z-50">
         <NavbarLogo />
         <ThemeToggle />
