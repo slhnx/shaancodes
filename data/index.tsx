@@ -7,15 +7,13 @@ import {
 
 export const featuredPosts = [
   {
-    title: "How to learn React - The effective way",
-    description:
-      "A markdown-based note-taking app I created for myself where I could take notes easily and all the notes will be easily available to me.",
-    publishDate: "2021-09-07",
-    lastModified: "2021-09-07",
+    title: "How to learn React - The Effective way",
     slug: "how-to-learn-react-the-effective-way",
+    publishDate: new Date("09/07/2021"),
+    lastModified: new Date("09/07/2021"),
     author: "Shaan Alam",
     coverImage:
-      "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fnh5vs0k1qaobm3s4ivgk.png",
+      "https://y4cpsre1ob.ufs.sh/f/4HrWTRZRvKfTFuFDO2KApCnXtIElVZrdxTUO09PvDJcyW7Kz",
     tags: ["react", "reactnative", "javascript", "webdev"],
     category: "Guides",
     featured: true,
@@ -28,14 +26,12 @@ export const featuredPosts = [
   {
     title:
       "Introducing Zettel: A Markdown based note taking application for developers",
-    description:
-      "A markdown-based note-taking app I created for myself where I could take notes easily and all the notes will be easily available to me.",
-    publishDate: "2023-09-14",
-    lastModified: "2023-09-14",
     slug: "introducing-zettel-a-markdown-based-note-taking-application-for-developers",
+    publishDate: new Date("09/14/2023"),
+    lastModified: new Date("09/14/2023"),
     author: "Shaan Alam",
     coverImage:
-      "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fovzuhgjr872cnslume6a.gif",
+      "https://y4cpsre1ob.ufs.sh/f/4HrWTRZRvKfT2XLBgSeNA4eBoGmOETcs7tZ30YlVKDhnx6Sf",
     tags: [],
     category: "Projects",
     featured: true,
