@@ -31,7 +31,7 @@ const Blogs = () => {
         </motion.p>
       </div>
       <div className="posts" onMouseLeave={() => setHovered(null)}>
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {featuredPosts.map((post, idx) => (
             <motion.div
               onMouseEnter={() => setHovered(idx)}
