@@ -5,13 +5,13 @@ import { InView } from "../ui/in-view";
 
 const Changelog = () => {
   return (
-    <div className="my-32 w-[40%] mx-auto">
-      <div className="text-center mb-16">
+    <section className="my-32 w-[80%] xl:w-[50%] mx-auto">
+      <div className="mb-16">
         <motion.h1
           initial={{ opacity: 0, y: -15, filter: "blur(40px)" }}
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           transition={{ delay: 0.4, duration: 0.4, ease: "easeInOut" }}
-          className="text-3xl font-semibold"
+          className="text-4xl font-bold text-foreground mb-4"
         >
           Life Changelog
         </motion.h1>
@@ -19,7 +19,7 @@ const Changelog = () => {
           initial={{ opacity: 0, y: -15, filter: "blur(40px)" }}
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           transition={{ delay: 0.4, duration: 0.6, ease: "easeInOut" }}
-          className="text-lg text-muted-foreground max-w-2xl mx-auto"
+          className="text-lg text-muted-foreground max-w-2xl"
         >
           A timeline of milestones, struggles, and breakthroughs that shaped my
           journey as a developer.
@@ -74,7 +74,7 @@ const Changelog = () => {
           </InView>
         ))}
       </div>
-    </div>
+    </section>
   );
 };
 
