@@ -43,7 +43,6 @@ const Navbar = () => {
     <NavWrapper className="w-[80%] xl:w-[50%] mx-auto">
       <NavBody className="relatize z-50">
         <NavbarLogo />
-        <ThemeToggle />
         <NavItems className="ml-auto" items={navItems} />
       </NavBody>
       <MobileNav>
