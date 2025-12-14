@@ -6,6 +6,8 @@ import Projects from "@/components/sections/projects";
 import MySkills from "@/components/sections/my-skills";
 import Changelog from "@/components/sections/changelog";
 import Experiences from "@/components/sections/experience";
+import Plasma from "@/components/plasma";
+import LightRays from "@/components/plasma";
 
 const blurVariants = {
   initial: { opacity: 0, scale: 0.8, rotate: 0 },
@@ -33,52 +35,28 @@ const pulseVariants = {
 const Page = () => {
   return (
     <main className="relative min-h-screen overflow-x-hidden">
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        className="bg-blurs absolute flex flex-col items-end -right-32 sm:-right-60 top-0 blur-xl -z-10"
-      >
-        <motion.div
-          variants={blurVariants}
-          initial="initial"
-          animate="animate"
-          transition={{
-            duration: 20,
-            repeat: Number.POSITIVE_INFINITY,
-            ease: "linear",
-          }}
-          className="h-[6rem] sm:h-[8rem] lg:h-[10rem] rounded-full w-[30rem] sm:w-[45rem] lg:w-[60rem] z-1 bg-gradient-to-b blur-[4rem] sm:blur-[5rem] lg:blur-[6rem] from-pink-600 to-sky-600"
-          style={{ transformOrigin: "center" }}
+      <div className="fixed inset-0 w-full h-screen">
+        <LightRays
+          raysOrigin="top-center"
+          raysColor="#fff"
+          raysSpeed={1.5}
+          lightSpread={0.8}
+          rayLength={1.2}
+          followMouse={true}
+          mouseInfluence={0.1}
+          noiseAmount={0.1}
+          distortion={0.05}
+          className="custom-rays"
         />
-        <motion.div
-          variants={floatingVariants}
-          animate="animate"
-          transition={{
-            delay: 1,
-            duration: 8,
-            repeat: Number.POSITIVE_INFINITY,
-            ease: "easeInOut",
-          }}
-          className="h-[6rem] sm:h-[8rem] lg:h-[10rem] rounded-full w-[45rem] sm:w-[70rem] lg:w-[90rem] z-1 bg-gradient-to-b blur-[4rem] sm:blur-[5rem] lg:blur-[6rem] from-blue-900 to-purple-600 opacity-50"
-        />
-        <motion.div
-          variants={pulseVariants}
-          animate="animate"
-          transition={{
-            delay: 2,
-            duration: 6,
-            repeat: Number.POSITIVE_INFINITY,
-            ease: "easeInOut",
-          }}
-          className="h-[6rem] sm:h-[8rem] lg:h-[10rem] rounded-full w-[30rem] sm:w-[45rem] lg:w-[60rem] z-1 bg-gradient-to-b blur-[4rem] sm:blur-[5rem] lg:blur-[6rem] from-emerald-600 to-sky-500"
-        />
-      </motion.div>
-      <Intro />
-      <MySkills />
-      <Projects />
-      <Experiences />
-      <Blogs />
-      <Changelog />
+      </div>
+      <div className="relative z-10">
+        <Intro />
+        <MySkills />
+        <Projects />
+        <Experiences />
+        <Blogs />
+        <Changelog />
+      </div>
     </main>
   );
 };
