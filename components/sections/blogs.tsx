@@ -9,7 +9,7 @@ const Blogs = () => {
   const [hovered, setHovered] = useState<number | null>(null);
 
   return (
-    <section className="my-32 w-[80%] xl:w-[50%] mx-auto">
+    <section id="blogs" className="my-32 w-[80%] xl:w-[50%] mx-auto">
       <div className="mb-16">
         <motion.h1
           initial={{ opacity: 0, y: -15, filter: "blur(40px)" }}
@@ -64,7 +64,8 @@ const Blogs = () => {
                     {post.title}
                   </h1>
                   <p className="text-neutral-500 blog-link-text mt-2">
-                    Published on {format(new Date(post.publishDate), "d/MM/yyy")}
+                    Published on{" "}
+                    {format(new Date(post.publishDate), "d/MM/yyy")}
                   </p>
                   <ul className="mt-2 flex items-center space-x-3 text-xs text-neutral-500">
                     {post.tags.map((tag) => (

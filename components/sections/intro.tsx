@@ -72,21 +72,27 @@ const Intro = () => {
                 onMouseLeave={() => setHovered(null)}
               >
                 {socials.map((social, idx) => (
-                  <div
+                  <a
+                    href={social.link}
                     key={social.link}
-                    className="block relative"
-                    onMouseEnter={() => setHovered(idx)}
+                    rel="noreferrer"
+                    target="_blank"
                   >
-                    {hovered === idx && (
-                      <motion.div
-                        layoutId="hovered"
-                        className="absolute top-[50%] -translate-y-[50%] left-1/2 -translate-x-1/2 -z-10 h-fit w-full p-4 rounded-md bg-gray-100 dark:bg-neutral-900"
-                      />
-                    )}
-                    <span className="text-neutral-400 cursor-pointer transition-all rounded-full w-fit p-2">
-                      <social.icon size={25} />
-                    </span>
-                  </div>
+                    <div
+                      className="block relative"
+                      onMouseEnter={() => setHovered(idx)}
+                    >
+                      {hovered === idx && (
+                        <motion.div
+                          layoutId="hovered"
+                          className="absolute top-[50%] -translate-y-[50%] left-1/2 -translate-x-1/2 -z-10 h-fit w-full p-4 rounded-md bg-gray-100 dark:bg-neutral-800"
+                        />
+                      )}
+                      <span className="text-neutral-400 cursor-pointer transition-all rounded-full w-fit p-2">
+                        <social.icon size={25} />
+                      </span>
+                    </div>
+                  </a>
                 ))}
               </div>
             </div>

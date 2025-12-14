@@ -128,7 +128,7 @@ export const skills = [
 export const socials = [
   {
     icon: IconBrandTwitter,
-    link: "https://twitter.com/shaancodes_",
+    link: "https://twitter.com/shaancodes",
     label: "Twitter",
   },
   {

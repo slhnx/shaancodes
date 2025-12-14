@@ -159,3 +159,7 @@
 .article a {
   @apply text-cyan-500 hover:underline;
 }
+
+html, body {
+  scroll-behavior: smooth;
+}

@@ -18,16 +18,20 @@ const Navbar = () => {
 
   const navItems = [
     {
-      name: "Projects",
-      link: "#pricing",
-    },
-    {
       name: "Skills",
-      link: "#skills",
+      link: "#my-skills",
     },
     {
-      name: "About",
-      link: "#about",
+      name: "Projects",
+      link: "#projects",
+    },
+    {
+      name: "Work Experiences",
+      link: "#experiences",
+    },
+    {
+      name: "Blogs",
+      link: "#blogs",
     },
     {
       name: "Contact",

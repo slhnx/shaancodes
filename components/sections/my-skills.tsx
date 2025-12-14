@@ -5,7 +5,7 @@ import { AnimatedGroup } from "../ui/animated-group";
 
 const MySkills = () => {
   return (
-    <section className="my-32 w-[80%] xl:w-[50%] mx-auto"> 
+    <section id="my-skills" className="my-32 w-[80%] xl:w-[50%] mx-auto">
       <div className="mb-8">
         <motion.h1
           initial={{ opacity: 0, y: -15, filter: "blur(40px)" }}
@@ -21,8 +21,8 @@ const MySkills = () => {
           transition={{ delay: 0.4, duration: 0.6, ease: "easeInOut" }}
           className="text-lg text-muted-foreground max-w-2xl"
         >
-          A showcase of the tools, technologies, and concepts I&apos;ve learned and
-          applied throughout my journey.
+          A showcase of the tools, technologies, and concepts I&apos;ve learned
+          and applied throughout my journey.
         </motion.p>
       </div>
       <div className="mb-16">

@@ -5,7 +5,7 @@ import { motion } from "motion/react";
 
 const Experiences = () => {
   return (
-    <section className="my-32 w-[80%] xl:w-[50%] mx-auto">
+    <section id="experiences" className="my-32 w-[80%] xl:w-[50%] mx-auto">
       <div className="mb-16">
         <motion.h1
           initial={{ opacity: 0, y: -15, filter: "blur(40px)" }}
