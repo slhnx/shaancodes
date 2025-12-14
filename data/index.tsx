@@ -80,6 +80,15 @@ export const projects = [
     live_link: "https://zettel-eight.vercel.app/",
     github_repo_link: "https://github.com/shaan-alam/zettel",
   },
+  {
+    icon: "https://y4cpsre1ob.ufs.sh/f/4HrWTRZRvKfTX6lJesVCyGYmoUkMrgbWhs9ZfKEnv7xaczVS",
+    title: "Martian Nigh VS Code Theme",
+    description: "My very own VS Code theme called 'Martian Night'",
+    tags: ["vscode", "json"],
+    live_link:
+      "https://marketplace.visualstudio.com/items?itemName=shaanalam718.martian-night",
+    github_repo_link: "https://github.com/slhnx/martian-night-vscode-theme",
+  },
 ];
 
 export const skills = [
