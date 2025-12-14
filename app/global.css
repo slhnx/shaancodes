@@ -141,3 +141,21 @@
     transform-origin: bottom left;
   }
 }
+
+
+
+.article > * {
+  margin: 1.5rem 0;
+}
+
+.article > p {
+  @apply text-gray-200;
+}
+
+.article li {
+  list-style-type: disc;
+}
+
+.article a {
+  @apply text-cyan-500 hover:underline;
+}
