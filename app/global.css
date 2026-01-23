@@ -122,6 +122,10 @@
   }
 }
 
+*::selection {
+  @apply bg-primary text-primary-foreground;
+}
+
 .underline-effect {
   @apply relative;
   &:after {

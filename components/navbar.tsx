@@ -1,16 +1,15 @@
 "use client";
-import { useState } from "react";
 import {
-  Navbar as NavWrapper,
+  MobileNav,
+  MobileNavHeader,
+  MobileNavMenu,
+  MobileNavToggle,
+  NavbarLogo,
   NavBody,
   NavItems,
-  MobileNav,
-  NavbarLogo,
-  NavbarButton,
-  MobileNavHeader,
-  MobileNavToggle,
-  MobileNavMenu,
+  Navbar as NavWrapper
 } from "@/components/ui/resizable-navbar";
+import { useState } from "react";
 import { ThemeToggle } from "./theme-toggle";
 
 const Navbar = () => {
@@ -44,6 +43,7 @@ const Navbar = () => {
       <NavBody className="relatize z-50">
         <NavbarLogo />
         <NavItems className="ml-auto" items={navItems} />
+        <ThemeToggle />
       </NavBody>
       <MobileNav>
         <MobileNavHeader>

@@ -7,7 +7,10 @@ import rehypeHighlight from "rehype-highlight";
 const nextConfig = {
   pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
   images: {
-    remotePatterns: [new URL("https://media2.dev.to/**")],
+    remotePatterns: [
+      new URL("https://media2.dev.to/**"),
+      new URL("https://api.microlink.io"),
+    ],
   },
 };
 

@@ -5,13 +5,13 @@ import { AnimatedGroup } from "../ui/animated-group";
 
 const MySkills = () => {
   return (
-    <section id="my-skills" className="my-32 w-[80%] xl:w-[50%] mx-auto">
+    <section id="my-skills" className="my-16 w-[80%] xl:w-[50%] mx-auto">
       <div className="mb-8">
         <motion.h1
           initial={{ opacity: 0, y: -15, filter: "blur(40px)" }}
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           transition={{ delay: 0.4, duration: 0.4, ease: "easeInOut" }}
-          className="text-3xl font-semibold"
+          className="text-3xl mb-4 font-semibold"
         >
           Skills
         </motion.h1>
@@ -19,7 +19,7 @@ const MySkills = () => {
           initial={{ opacity: 0, y: -15, filter: "blur(40px)" }}
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           transition={{ delay: 0.4, duration: 0.6, ease: "easeInOut" }}
-          className="text-lg text-muted-foreground max-w-2xl"
+          className="text-muted-foreground max-w-2xl"
         >
           A showcase of the tools, technologies, and concepts I&apos;ve learned
           and applied throughout my journey.

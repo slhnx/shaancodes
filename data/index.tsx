@@ -92,46 +92,38 @@ export const projects = [
 ];
 
 export const skills = [
-  {
-    icon: "/images/react.svg",
-    label: "React",
-    id: "react",
-  },
-  {
-    icon: "/images/nextjs.svg",
-    label: "Next.js",
-    id: "nextjs",
-  },
-  {
-    icon: "/images/typescript.svg",
-    label: "TypeScript",
-    id: "typescript",
-  },
-  {
-    icon: "/images/nodejs.svg",
-    label: "Node.js",
-    id: "nodejs",
-  },
-  {
-    icon: "/images/postgres.svg",
-    label: "Postgres",
-    id: "postgres",
-  },
-  {
-    icon: "/images/trpc.svg",
-    label: "tRPC",
-    id: "trpc",
-  },
-  {
-    icon: "/images/tailwind.svg",
-    label: "Tailwind CSS",
-    id: "tailwind",
-  },
-  {
-    icon: "/images/figma.svg",
-    label: "Figma",
-    id: "figma",
-  },
+  // Frontend
+  { label: "JavaScript", id: "javascript" },
+  { label: "TypeScript", id: "typescript" },
+  { label: "React", id: "react" },
+  { label: "Next.js", id: "nextjs" },
+  { label: "Tailwind CSS", id: "tailwind" },
+  { label: "HTML", id: "html" },
+  { label: "CSS", id: "css" },
+
+  // Backend
+  { label: "Node.js", id: "nodejs" },
+  { label: "Express.js", id: "express" },
+  { label: "tRPC", id: "trpc" },
+
+  // Databases & Storage
+  { label: "PostgreSQL", id: "postgres" },
+  { label: "MongoDB", id: "mongodb" },
+  { label: "Firebase Storage", id: "firebase-storage" },
+
+  // Auth & APIs
+  { label: "REST APIs", id: "rest-api" },
+  { label: "OAuth (Google, GitHub)", id: "oauth" },
+  { label: "Authentication & Authorization", id: "auth" },
+
+  // Tooling & DevOps-lite
+  { label: "Git", id: "git" },
+  { label: "GitHub", id: "github" },
+  { label: "Vercel", id: "vercel" },
+
+  // Product & UI
+  { label: "Figma", id: "figma" },
+  { label: "UI/UX Design", id: "ui-ux" },
 ];
 
 export const socials = [
@@ -139,21 +131,25 @@ export const socials = [
     icon: IconBrandTwitter,
     link: "https://twitter.com/shaancodes",
     label: "Twitter",
+    imageSrc: "/images/x.png",
   },
   {
     icon: IconBrandGithub,
-    link: "https://github.com/slhxn",
+    link: "https://github.com/slhnx",
     label: "Github",
+    imageSrc: "/images/github.png",
   },
   {
     icon: IconBrandLinkedin,
     link: "https://linkedin.com/in/shaan-alam",
     label: "Linkedin",
+    imageSrc: "/images/linkedin.png",
   },
   {
     icon: IconBrandInstagram,
     link: "https://instagram.com/shaancodes",
     label: "Instagram",
+    imageSrc: "/images/insta.png",
   },
 ];
 
