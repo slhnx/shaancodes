@@ -3,9 +3,8 @@ import { socials } from "@/data";
 import { motion } from "motion/react";
 import Image from "next/image";
 import { useState } from "react";
+import { GitHubCalendar } from "react-github-calendar";
 import { LinkPreview } from "../ui/link-preview";
-import { Button } from "../ui/button";
-import { Mail } from "lucide-react";
 
 const titleVariant = {
   initial: { opacity: 0, y: -15, filter: "blur(40px)" },
@@ -111,6 +110,17 @@ const Intro = () => {
                   </LinkPreview>
                 ))}
               </div>
+            </div>
+            <div>
+              <GitHubCalendar
+                username="slhnx"
+                theme={{
+                  light: ["hsl(0, 0%, 92%)", "blue"],
+                  dark: ["hsl(0 0% 83%)", "#333"],
+                }}
+                colorScheme="light"
+                showTotalCount={false}
+              />
             </div>
           </div>
         </motion.div>

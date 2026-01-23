@@ -23,7 +23,7 @@ const Projects = () => {
           initial={{ opacity: 0, y: -15, filter: "blur(40px)" }}
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           transition={{ delay: 0.4, duration: 0.6, ease: "easeInOut" }}
-          className="text-lg text-muted-foreground max-w-2xl"
+          className="text-muted-foreground max-w-2xl"
         >
           A collection of things I&apos;ve built — from small experiments to
           full-fledged applications.
