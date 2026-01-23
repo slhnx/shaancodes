@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { GitHubCalendar } from "react-github-calendar";
 import { LinkPreview } from "../ui/link-preview";
+import { useTheme } from "next-themes";
 
 const titleVariant = {
   initial: { opacity: 0, y: -15, filter: "blur(40px)" },
@@ -17,6 +18,7 @@ const subtitleVariant = {
 };
 
 const Intro = () => {
+  const { theme } = useTheme();
   const [hovered, setHovered] = useState<number | null>(null);
 
   return (
@@ -115,10 +117,10 @@ const Intro = () => {
               <GitHubCalendar
                 username="slhnx"
                 theme={{
-                  light: ["hsl(0, 0%, 92%)", "blue"],
-                  dark: ["hsl(0 0% 83%)", "#333"],
+                  light: ["hsl(0, 0%, 92%)", "#000"],
+                  dark: ["#111", "#eee"],
                 }}
-                colorScheme="light"
+                colorScheme={theme === "dark" ? "dark" : "light"}
                 showTotalCount={false}
               />
             </div>
