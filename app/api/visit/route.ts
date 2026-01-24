@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
 import { redis } from "@/lib/redis";
 
-export const revalidate = 60; 
+export const dynamic = "force-dynamic";
 
 export async function GET() {
   const cookieStore = await cookies();
@@ -30,6 +30,3 @@ export async function GET() {
     },
   );
 }
-
-
-
