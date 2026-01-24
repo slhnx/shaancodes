@@ -1,21 +1,23 @@
 "use client";
 import { featuredPosts } from "@/data";
 import { format } from "date-fns";
+import { ChevronRight } from "lucide-react";
 import { motion } from "motion/react";
 import Link from "next/link";
 import { useState } from "react";
+import { Button } from "../ui/button";
 
 const Blogs = () => {
   const [hovered, setHovered] = useState<number | null>(null);
 
   return (
-    <section id="blogs" className="my-32 w-[80%] xl:w-[50%] mx-auto">
+    <section id="blogs" className="my-20 w-[80%] xl:w-[50%] mx-auto">
       <div className="mb-16">
         <motion.h1
           initial={{ opacity: 0, y: -15, filter: "blur(40px)" }}
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           transition={{ delay: 0.8, duration: 0.6, ease: "easeInOut" }}
-          className="text-4xl font-bold text-foreground mb-4"
+          className="text-xl font-bold text-foreground mb-4"
         >
           My Writings 🖊️
         </motion.h1>
@@ -23,7 +25,7 @@ const Blogs = () => {
           initial={{ opacity: 0, y: -15, filter: "blur(40px)" }}
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           transition={{ delay: 0.6, duration: 0.6, ease: "easeInOut" }}
-          className="text-lg text-muted-foreground max-w-2xl"
+          className="text-muted-foreground max-w-2xl"
         >
           This is my writing area, I document all my learnings here. You can
           find code snippets, blogs on technologies or in general what I think
@@ -79,8 +81,10 @@ const Blogs = () => {
             </motion.div>
           ))}
         </div>
-        <Link href="/blogs" className="underline-effect">
-          More...
+        <Link href="/blogs" className="flex items-center gap-x-1 w-fit text-sm">
+          <Button variant="ghost">
+            More <ChevronRight size={12} />
+          </Button>
         </Link>
       </div>
     </section>

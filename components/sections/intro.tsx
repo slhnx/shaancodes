@@ -32,15 +32,24 @@ const Intro = () => {
             opacity: 1,
             transition: { duration: 0.4, ease: "easeInOut" },
           }}
-          className="hero mt-52 gap-4"
+          className="hero mt-28 gap-4"
         >
-          <Image
-            src="/me.jpg"
-            height={100}
-            width={100}
-            alt="Shaan Alam"
-            className="rounded-sm transition-transform hover:scale-105 hover:-rotate-[5deg]"
-          />
+          <div className="relative mb-8">
+            <Image
+              src="/images/header.jpg"
+              width={1000}
+              height={300}
+              alt="header"
+              className="rounded-lg"
+            />
+            <Image
+              src="/me.jpg"
+              height={100}
+              width={100}
+              alt="Shaan Alam"
+              className="absolute left-4 -bottom-4 rounded-sm transition-transform hover:scale-105 hover:-rotate-[5deg]"
+            />
+          </div>
           <div>
             <motion.h4
               variants={titleVariant}

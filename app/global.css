@@ -153,7 +153,7 @@
 }
 
 .article > p {
-  @apply text-gray-200;
+  @apply text-primary;
 }
 
 .article li {
@@ -161,7 +161,7 @@
 }
 
 .article a {
-  @apply text-cyan-500 hover:underline;
+  @apply text-primary font-semibold underline;
 }
 
 html, body {

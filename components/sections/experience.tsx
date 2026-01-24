@@ -34,7 +34,7 @@ const Experiences = () => {
 
       <div className="space-y-8 w-full mx-auto">
         {experiences.workExperiences.map((experience, index) => (
-          <Accordion type="single" collapsible defaultValue="item-1">
+          <Accordion key={index} type="single" collapsible defaultValue="item-1" >
             <AccordionItem value="item-1">
               <AccordionTrigger className="rounded-br-none rounded-bl-none flex items-center gap-x-2 hover:no-underline py-2 px-3 hover:bg-muted-foreground/10 mt-2 ">
                 <div className="flex items-start gap-4 mb-6">

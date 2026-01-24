@@ -10,6 +10,7 @@ const nextConfig = {
     remotePatterns: [
       new URL("https://media2.dev.to/**"),
       new URL("https://api.microlink.io"),
+      new URL("https://y4cpsre1ob.ufs.sh/**"),
     ],
   },
 };
