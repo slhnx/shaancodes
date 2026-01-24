@@ -11,7 +11,7 @@ const MySkills = () => {
           initial={{ opacity: 0, y: -15, filter: "blur(40px)" }}
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           transition={{ delay: 0.4, duration: 0.4, ease: "easeInOut" }}
-          className="text-3xl mb-4 font-semibold"
+          className="text-xl mb-4 font-semibold"
         >
           Skills
         </motion.h1>

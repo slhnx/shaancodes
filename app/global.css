@@ -127,7 +127,7 @@
 }
 
 .underline-effect {
-  @apply relative;
+  @apply relative text-primary;
   &:after {
     content: "";
     position: absolute;
