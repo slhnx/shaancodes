@@ -22,7 +22,7 @@ const Footer = () => {
         </div>
         <div className="text-right text-muted-foreground">
           <p className="text-muted-foreground">
-            Visitor Count: <span className="ml-1 font-medium">#{count}</span>
+            You're the <span className="mx-[0.5] font-medium">#{count}</span> visitor
           </p>
         </div>
       </div>

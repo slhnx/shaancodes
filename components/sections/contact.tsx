@@ -23,13 +23,11 @@ const ContactSection = () => {
             </p>
 
             <div className="flex items-center justify-center gap-4 pt-4">
-              <Button variant="outline" size="lg">
-                Email Me
-              </Button>
-              <Button variant="default" size="lg" className="gap-2 group">
-                Book a Call
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-              </Button>
+              <a href="mailto:shaanalam369@gmail.com">
+                <Button variant="outline" size="lg">
+                  Email Me
+                </Button>
+              </a>
             </div>
           </div>
 
