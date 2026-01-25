@@ -1,3 +1,4 @@
+'use client';
 import { experiences } from "@/data";
 import { Badge } from "@/components/ui/badge";
 import { MapPin, Calendar } from "lucide-react";

@@ -15,7 +15,7 @@ export async function getPosts(): Promise<Post[]> {
   // Retrieve slugs from post routes
   const blogsPath = path.join("app", "blogs");
   const slugs = (await fs.readdir(blogsPath, { withFileTypes: true })).filter(
-    (dirent) => dirent.isDirectory()
+    (dirent) => dirent.isDirectory(),
   );
 
   // Retrieve metadata from MDX files
@@ -24,7 +24,7 @@ export async function getPosts(): Promise<Post[]> {
       const { name } = dirent;
       const { metadata } = await import(`../app/blogs/${name}/page.mdx`);
       return { slug: name, ...metadata };
-    })
+    }),
   );
 
   // Sort posts from newest to oldest

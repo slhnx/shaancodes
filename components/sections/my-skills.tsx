@@ -1,3 +1,4 @@
+'use client';
 import { skills } from "@/data";
 import { Badge } from "../ui/badge";
 import { motion } from "motion/react";

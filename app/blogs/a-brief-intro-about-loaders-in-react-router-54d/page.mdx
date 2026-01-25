@@ -1,0 +1,271 @@
+Hi. In the ever-evolving field of web-development, user experience is the top priority. As our web app grows more complex and data-intensive, we face challenges of efficiently handling and loading data to ensure seamless user experience. 
+
+A few days back I was working on a personal project, where I need to fetch data from the back-end based on different routes in my React App. I wanted to basically render each note on a different route. So I created dynamic routes. The routes was created with the note's unique ID. Suppose a note has ID 1, to it will be rendered on `/notes/1` route.
+
+My First approach was to create a Note component and then obtain the unique ID from the params. And then I could use this ID to fetch the data from my server. This approach had me encounter several problems.
+
+## Problems faced
+
+- **Inefficient data loading:** Without proper handling, & fetching data for dynamic route can lead to multiple server requests which are unnecessary. This in turn can increase the server load.
+
+- **Data inconsistency:** As I was navigating between different routes, the data related to each route was not updated properly.
+
+- **Inefficiency in handling state managment:** Managing the loading state and displaying the approprite UI was complex in this case because I was dealing with multiple dynamic routes simultaneously.
+
+## Solution
+
+After researching, I cam across **data loaders**  in react-router-dom. After reading docs, I came to understand about data loaders and how they are useful in this particular scenario. In this blog I will teach you what are data loaders and how they work in react-router!3
+
+## What are loaders?
+
+Loaders are just functions which are used to handle the loading of the data while you are navigating between the pages of the website. Imagine you are browsing a website. When you browse to a new page, a loader or spinner is displayed to show that the data is being fetched until the new page loads. Loaders in react router work similarly.
+
+## What are we going to build.
+
+We're gonna build a simple project where will dispplay the posts (fetched from an API) on a page. And each post will have it's own route and will be displayed there. It's going to look something like this - 
+
+
+![React Router](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/u3tz0b72tkmi70p55ajy.gif)
+
+
+## Let's Code!
+
+
+### Creating React App and installing react-router-dom
+
+```shell
+npx create-react-app loader-example
+cd loader-example
+npm install loader-example
+```
+
+### Basic Setup
+
+We willl be building simple components to fetch data from an API and show it in the UI. We will create three routes `home, /posts, /posts/:id`inside the parent route `/`
+
+```javascript
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  Outlet
+} from "react-router-dom";
+
+const Layout = () => {
+  return (
+    <>
+      <Link to="/home">Home</Link>
+      <Link to="/posts">Posts</Link>
+      <div>
+        <Outlet />
+      </div>
+    </>
+  );
+};
+
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path="/" element={<Layout />}>
+      <Route index path="/home" element={<Home />} />
+      <Route path="/posts" element={<Posts />}></Route>
+      <Route path="/posts/:id" element={<Post />} />
+    </Route>
+  )
+);
+```
+
+First, we will create Browser Router by creating routes inside it using the `createBrowserRouter` and `createRoutesFromElements` functions like this.
+
+Just creating the router won't help, we have to pass this router inside the `RouterProvider` component inside the App Component.
+
+```javascript
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+} from "react-router-dom";
+
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path="/" element={<Layout />}>
+      <Route index path="/home" element={<Home />} />
+      <Route path="/posts" element={<Posts />}></Route>
+      <Route path="/posts/:id" element={<Post />} />
+    </Route>
+  )
+);
+
+const App = () => {
+  return (
+    <div>
+      <RouterProvider router={router} />
+    </div>
+  );
+};
+
+export default App;
+
+```
+
+### Building the components
+
+Now we just have to build the Home and Posts component.
+
+```javascript
+// Home.js
+const Home = () => {
+  return (
+    <div>
+      <p>Home page</p>
+    </div>
+  )
+}
+
+export default Home;
+```
+
+```javascript
+const api = "https://jsonplaceholder.typicode.com/posts";
+
+const Posts = () => {
+  // Posts Component
+};
+
+export default Data;
+
+export const dataLoader = async () => {
+  const res = await fetch(api);
+  const jsonResult = await res.json();
+
+  return jsonResult;
+};
+
+```
+
+In the Posts component, we will also create a **data loader** function and export it. In this function we will actually fetch the results from an external API and return it. Later, we will use this function in App.js to mention the loader in the routes.
+
+The loader will fetch the result just before the Posts component renders on the screen, so that it has the necessary data to show in the UI.
+
+Now, let's complete the Posts component.
+
+```javascript
+import { useLoaderData, useNavigation, Link } from "react-router-dom";
+
+const api = "https://jsonplaceholder.typicode.com/posts";
+
+const Data = () => {
+  const result = useLoaderData();
+  const navigation = useNavigation();
+
+  if (navigation.state === "loading") {
+    return <h1>Loading!</h1>;
+  }
+
+  return (
+    <div>
+      {result.map((res) => (
+        <div key={res.id}>
+          <Link to={`/posts/${res.id}`}>
+            <h1>{res.title}</h1>
+          </Link>
+          <p>{res.body}</p>
+        </div>
+      ))}
+    </div>
+  );
+};
+
+export default Data;
+
+export const dataLoader = async () => {
+  const res = await fetch(api);
+  const jsonResult = await res.json();
+
+  return jsonResult;
+};
+
+```
+
+We will use the useLoaderData() hook to get the result from the loader. Also using the useNavigation() hook, we can check the state of the loader and display some kind of spinner in the UI to tell the user that deta is being fetched in the background. However, for the sake of simplicity I just rendered a heading in the UI for this puprose.
+
+Now, we just have to build the post component which is very simple. We just have to create a simple component which has a loader which will be used to fetch a single post from the external API. The response of the API can be used inside the component using the `useLoaderData()` hook.
+
+```javascript
+import { useLoaderData } from "react-router-dom";
+
+const api = "https://jsonplaceholder.typicode.com/posts";
+
+export const postLoader = async ({ params }) => {
+  const res = await fetch(`${api}/${params.id}`);
+  const resJson = await res.json();
+
+  return resJson;
+};
+
+const Post = () => {
+  const result = useLoaderData();
+  return (
+    <div>
+      <h1>
+        {result.id} - {result.title}
+      </h1>
+    </div>
+  );
+};
+
+export default Post;
+
+```
+
+### Final router changes
+
+Now we just have to do one more change in the App component. We will have to pass the loaders function we created inside the `Posts` and `Post` components in their respective routes.
+
+```javascript
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path="/" element={<Layout />}>
+      <Route index path="/home" element={<Home />} />
+      <Route path="/posts" element={<Posts />} loader={dataLoader} />
+      <Route path="/posts/:id" element={<Post />} loader={postLoader} />
+    </Route>
+  )
+);
+```
+
+And now we are done!
+
+And this is how data fetching in react-router-dom is made easy using Data Loaders. 
+
+### Conclusion
+
+I hope you enjoyed this tutorial. If you think I made a mistake somewhere let me know in the comment section. 
+
+Github Repo - [https://github.com/shaan-alam/react-router-loaders-example](https://github.com/shaan-alam/react-router-loaders-example)
+
+Live Demo - [https://react-router-loaders-example.vercel.app/](https://react-router-loaders-example.vercel.app/)
+
+#### My Socials
+
+Twitter - [https://twitter.com/shaancodes](https://twitter.com/shaancodes)
+
+Instagram - [https://www.instagram.com/shaancodes/](https://www.instagram.com/shaancodes/)
+
+GitHub - [https://github.com/shaan-alam/](https://github.com/shaan-alam/)
+
+
+export const metadata = {
+  title:
+    "A brief intro about loaders in react router",
+  slug: "a-brief-intro-about-loaders-in-react-router-54d",
+  publishDate: new Date("28/07/2023"),
+  lastModified: new Date("28/07/2023"),
+  author: "Shaan Alam",
+  coverImage:
+    "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F9x780wi61emb5ayejx4v.png",
+  tags: ['webdev', 'react', 'javascript', 'tutorial'],
+  category: "Guides",
+  featured: true,
+  published: true,
+  excerpt:
+    "Learn about Zettel, a markdown-based note-taking application built with Next.js, featuring collections, dark mode, and syntax highlighting.",
+  originalUrl: "https://dev.to/shaancodes/a-brief-intro-about-loaders-in-react-router-54d",
+};

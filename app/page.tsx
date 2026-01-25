@@ -1,4 +1,3 @@
-"use client";
 import Blogs from "@/components/sections/blogs";
 import ContactSection from "@/components/sections/contact";
 import Experiences from "@/components/sections/experience";
