@@ -1,11 +1,18 @@
 import { Providers } from "@/components/providers";
 import type { Metadata } from "next";
-import { Inter_Tight } from "next/font/google";
+import { Inter_Tight, Roboto_Mono } from "next/font/google";
+// @ts-ignore
 import "./global.css";
 
 const inter = Inter_Tight({
   variable: "--font-inter-tight",
   subsets: ["latin"],
+});
+
+const robotoMono = Roboto_Mono({
+  variable: "--font-roboto-mono",
+  subsets: ["latin"],
+  weight: ["400", "500", "700"],
 });
 
 export const metadata: Metadata = {
@@ -20,7 +27,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.className} antialiased`}>
+      <body className={`${inter.className} ${robotoMono.variable} antialiased`}>
         <Providers>{children}</Providers>
       </body>
     </html>

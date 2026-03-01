@@ -122,7 +122,7 @@ const Intro = () => {
                 ))}
               </div>
             </div>
-            <div>
+            <>
               <GitHubCalendar
                 username="slhnx"
                 theme={{
@@ -132,7 +132,7 @@ const Intro = () => {
                 colorScheme={theme === "dark" ? "dark" : "light"}
                 showTotalCount={false}
               />
-            </div>
+            </>
           </div>
         </motion.div>
       </div>

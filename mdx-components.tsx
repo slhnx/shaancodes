@@ -1,6 +1,22 @@
+import CodeHeader from "@/components/ui/code-header";
 import type { MDXComponents } from "mdx/types";
 import Image, { ImageProps } from "next/image";
-import CodeHeader from "@/components/ui/code-header";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { martianNight } from "./lib/utils";
+
+// Helper function to extract text from children
+const extractText = (children: any): string => {
+  if (typeof children === "string") {
+    return children;
+  }
+  if (Array.isArray(children)) {
+    return children.map(extractText).join("");
+  }
+  if (children?.props?.children) {
+    return extractText(children.props.children);
+  }
+  return "";
+};
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
@@ -49,24 +65,43 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
           height: "auto",
           margin: "1rem 0",
         }}
+        className="rounded-md"
         {...(props as ImageProps)}
       />
     ),
-    pre: (props) => <pre {...props} className="rounded-lg border-2" />,
-    code: ({ children, ...props }) => (
-      <code
-        {...props}
-        style={{
-          padding: "10px",
-          borderBottomLeftRadius: "6px",
-          borderBottomRightRadius: "6px",
-          fontSize: "0.8rem",
-        }}
-      >
-        {children}
-      </code>
-    ),
-    CodeHeader,
+    pre: ({ children, ...props }: any) => {
+      // Get the code element's className from children
+      const codeElement = children?.props || {};
+      const className = codeElement.className || "";
+      const codeContent = extractText(codeElement.children);
+
+      const match = /language-(\w+)/.exec(className);
+      const language = match ? match[1] : "javascript";
+
+      return (
+        <SyntaxHighlighter
+          language={language}
+          style={martianNight as Record<string, React.CSSProperties>}
+          className="rounded-md my-4"
+          PreTag="div"
+          CodeTag="div"
+        >
+          {codeContent.replace(/\n$/, "")}
+        </SyntaxHighlighter>
+      );
+    },
+    code: ({ children, className, ...props }) => {
+      // Inline code (no className)
+      if (!className) {
+        return (
+          <code className="bg-slate-200 dark:bg-slate-800 px-1.5 py-0.5 rounded text-sm">
+            {children}
+          </code>
+        );
+      }
+      // Block code is handled by pre component
+      return <code className={className}>{children}</code>;
+    },
     ...components,
   };
 }

@@ -34,7 +34,7 @@
     "react-activity-calendar": "^3.0.5",
     "react-dom": "19.1.0",
     "react-github-calendar": "^5.0.4",
-    "react-syntax-highlighter": "^15.5.0",
+    "react-syntax-highlighter": "^15.6.6",
     "rehype-highlight": "^7.0.0",
     "remark-frontmatter": "^5.0.0",
     "remark-gfm": "^4.0.0",
