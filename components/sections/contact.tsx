@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 
 const ContactSection = () => {
   return (
-    <section className="bg-background flex flex-col">
+    <section className="bg-background flex flex-col" id="contact">
       <div className="flex-1 flex items-center justify-center px-6 py-20">
         <div className="w-full max-w-4xl">
           <div className="flex items-center gap-0 mb-16">
