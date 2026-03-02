@@ -6,6 +6,7 @@ import { useState } from "react";
 import { GitHubCalendar } from "react-github-calendar";
 import { LinkPreview } from "../ui/link-preview";
 import { useTheme } from "next-themes";
+import SignatureAnimation from "signature-animation";
 
 const titleVariant = {
   initial: { opacity: 0, y: -15, filter: "blur(40px)" },
@@ -60,6 +61,7 @@ const Intro = () => {
             >
               Hello world 👋 I'm Shaan Alam
             </motion.h4>
+            <SignatureAnimation duration={0.5} delay={0.3}>Shaan Alam</SignatureAnimation>
             <motion.div
               variants={subtitleVariant}
               initial="initial"
