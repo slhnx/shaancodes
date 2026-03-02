@@ -69,7 +69,7 @@ const BlogPostsList = ({ posts }: { posts: Post[] }) => {
                 <div className="mt-4">
                   <p className="text-neutral-500 text-xs sm:text-sm">
                     Published on{" "}
-                    {format(new Date(post.publishDate), "d/MM/yyyy")}
+                    {format(new Date(post.publishDate), "dd/MM/yyyy")}
                   </p>
 
                   <ul className="mt-2 flex flex-wrap gap-2 text-xs text-neutral-500">

@@ -1,10 +1,10 @@
-import CodeHeader from "@/components/ui/code-header";
+import BlogLayout from "./components/blog-layout";
 import type { MDXComponents } from "mdx/types";
 import Image, { ImageProps } from "next/image";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { martianNight } from "./lib/utils";
 
-// Helper function to extract text from children
+
 const extractText = (children: any): string => {
   if (typeof children === "string") {
     return children;
@@ -91,7 +91,6 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       );
     },
     code: ({ children, className, ...props }) => {
-      // Inline code (no className)
       if (!className) {
         return (
           <code className="bg-slate-200 dark:bg-slate-800 px-1.5 py-0.5 rounded text-sm">
@@ -99,9 +98,9 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
           </code>
         );
       }
-      // Block code is handled by pre component
       return <code className={className}>{children}</code>;
     },
+    BlogLayout,
     ...components,
   };
 }

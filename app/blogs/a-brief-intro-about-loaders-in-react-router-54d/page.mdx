@@ -1,3 +1,23 @@
+export const frontMatter = {
+  title:
+    "A brief intro about loaders in react router",
+  slug: "a-brief-intro-about-loaders-in-react-router-54d",
+  publishDate: new Date("28/07/2023"),
+  lastModified: new Date("28/07/2023"),
+  author: "Shaan Alam",
+  coverImage:
+    "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F9x780wi61emb5ayejx4v.png",
+  tags: ['webdev', 'react', 'javascript', 'tutorial'],
+  category: "Guides",
+  featured: true,
+  published: true,
+  excerpt:
+    "Learn about Zettel, a markdown-based note-taking application built with Next.js, featuring collections, dark mode, and syntax highlighting.",
+  originalUrl: "https://dev.to/shaancodes/a-brief-intro-about-loaders-in-react-router-54d",
+}
+
+<BlogLayout frontMatter={frontMatter} />
+
 Hi. In the ever-evolving field of web-development, user experience is the top priority. As our web app grows more complex and data-intensive, we face challenges of efficiently handling and loading data to ensure seamless user experience. 
 
 A few days back I was working on a personal project, where I need to fetch data from the back-end based on different routes in my React App. I wanted to basically render each note on a different route. So I created dynamic routes. The routes was created with the note's unique ID. Suppose a note has ID 1, to it will be rendered on `/notes/1` route.
@@ -250,22 +270,3 @@ Twitter - [https://twitter.com/shaancodes](https://twitter.com/shaancodes)
 Instagram - [https://www.instagram.com/shaancodes/](https://www.instagram.com/shaancodes/)
 
 GitHub - [https://github.com/shaan-alam/](https://github.com/shaan-alam/)
-
-
-export const metadata = {
-  title:
-    "A brief intro about loaders in react router",
-  slug: "a-brief-intro-about-loaders-in-react-router-54d",
-  publishDate: new Date("28/07/2023"),
-  lastModified: new Date("28/07/2023"),
-  author: "Shaan Alam",
-  coverImage:
-    "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F9x780wi61emb5ayejx4v.png",
-  tags: ['webdev', 'react', 'javascript', 'tutorial'],
-  category: "Guides",
-  featured: true,
-  published: true,
-  excerpt:
-    "Learn about Zettel, a markdown-based note-taking application built with Next.js, featuring collections, dark mode, and syntax highlighting.",
-  originalUrl: "https://dev.to/shaancodes/a-brief-intro-about-loaders-in-react-router-54d",
-};

@@ -10,6 +10,8 @@ import { Button } from "../ui/button";
 const PostList = ({ posts }: { posts: Post[] }) => {
   const [hovered, setHovered] = useState<number | null>(null);
 
+  console.log(posts);
+
   return (
     <>
       <div className="mb-16">
@@ -34,11 +36,11 @@ const PostList = ({ posts }: { posts: Post[] }) => {
       </div>
       <div className="posts" onMouseLeave={() => setHovered(null)}>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          {posts.map((post, idx) => (
+          {posts && posts?.map((post, idx) => (
             <motion.div
               onMouseEnter={() => setHovered(idx)}
               className="my-3 transition-colors p-4 rounded-lg"
-              key={post.slug}
+              key={post?.slug}
               initial={{ opacity: 0, y: -15, filter: "blur(40px)" }}
               animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
               transition={{ delay: 0.6, duration: 0.6, ease: "easeInOut" }}
@@ -50,27 +52,27 @@ const PostList = ({ posts }: { posts: Post[] }) => {
                 />
               )}
               <Link
-                href={`/blogs/${post.slug}`}
-                key={post.slug}
+                href={`/blogs/${post?.slug}`}
+                key={post?.slug}
                 className="flex flex-col gap-4"
               >
                 <div className="w-full">
                   <img
-                    src={post.coverImage}
-                    alt={post.title}
+                    src={post?.coverImage}
+                    alt={post?.title}
                     className="rounded-lg w-full"
                   />
                 </div>
                 <div>
                   <h1 className="font-medium text-lg text-secondary-foreground blog-link">
-                    {post.title}
+                    {post?.title}
                   </h1>
                   <p className="text-neutral-500 blog-link-text mt-2">
                     Published on{" "}
-                    {format(new Date(post.publishDate), "d/MM/yyy")}
+                    {/* {format(new Date(post?.publishDate), "d/MM/yyy")} */}
                   </p>
                   <ul className="mt-2 flex items-center space-x-3 text-xs text-neutral-500">
-                    {post.tags.map((tag) => (
+                    {post?.tags?.map((tag) => (
                       <li className="blog-tag-item" key={tag}>
                         {tag}
                       </li>
