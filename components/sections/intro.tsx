@@ -42,7 +42,7 @@ const Intro = () => {
               alt="header"
               className="rounded-lg relative -z-[5]"
             />
-            <div className="absolute h-[100px] w-[100px] scale-150 opacity-45 blur-xl bg-green-500 -z-5 bottom-0 rounded-full"></div>
+            <div className="absolute h-[100px] w-[100px] scale-75 md:scale-150 opacity-45 blur-xl bg-green-500 -z-5 bottom-0 rounded-full"></div>
             <Image
               src="/me.jpg"
               height={100}
