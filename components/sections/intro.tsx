@@ -1,12 +1,11 @@
 "use client";
 import { socials } from "@/data";
 import { motion } from "motion/react";
+import { useTheme } from "next-themes";
 import Image from "next/image";
 import { useState } from "react";
 import { GitHubCalendar } from "react-github-calendar";
 import { LinkPreview } from "../ui/link-preview";
-import { useTheme } from "next-themes";
-import SignatureAnimation from "signature-animation";
 
 const titleVariant = {
   initial: { opacity: 0, y: -15, filter: "blur(40px)" },
@@ -41,14 +40,15 @@ const Intro = () => {
               width={1000}
               height={300}
               alt="header"
-              className="rounded-lg"
+              className="rounded-lg relative -z-[5]"
             />
+            <div className="absolute h-[100px] w-[100px] scale-150 opacity-45 blur-xl bg-green-500 -z-5 bottom-0 rounded-full"></div>
             <Image
               src="/me.jpg"
               height={100}
               width={100}
               alt="Shaan Alam"
-              className="absolute left-4 -bottom-4 rounded-sm transition-transform hover:scale-105 hover:-rotate-[5deg]"
+              className="absolute left-4 -bottom-4 rounded-sm transition-transform z-10 hover:scale-105 hover:-rotate-[5deg]"
             />
           </div>
           <div>
@@ -61,7 +61,6 @@ const Intro = () => {
             >
               Hello world 👋 I'm Shaan Alam
             </motion.h4>
-            <SignatureAnimation duration={0.5} delay={0.3}>Shaan Alam</SignatureAnimation>
             <motion.div
               variants={subtitleVariant}
               initial="initial"
