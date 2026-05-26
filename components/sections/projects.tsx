@@ -74,13 +74,21 @@ const Projects = () => {
               <AccordionItem value="item-1">
                 <AccordionTrigger className="gap-x-2 hover:no-underline py-0 px-3 hover:bg-muted-foreground/8 mt-2 rounded-lg transition-colors duration-200">
                   <div className="flex items-center gap-x-2">
-                    <img
-                      src={project.icon}
-                      width={20}
-                      height={20}
-                      alt={project.title}
-                      className="rounded-md"
-                    />
+                    {project.title === "NetShift CLI" ? (
+                      <div className="flex h-5 w-5 items-center justify-center rounded-sm bg-foreground">
+                        <span className="font-mono text-[11px] font-bold text-background">
+                          N
+                        </span>
+                      </div>
+                    ) : (
+                      <img
+                        src={project.icon}
+                        width={20}
+                        height={20}
+                        alt={project.title}
+                        className="rounded-md"
+                      />
+                    )}
                     <h1 className="text-primary font-semibold my-3">
                       {project.title}
                     </h1>

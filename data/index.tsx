@@ -44,6 +44,14 @@ export const featuredPosts = [
 
 export const projects = [
   {
+    icon: "",
+    title: "NetShift CLI",
+    description: "Built NetShift, a terminal-first API workflow CLI for rapid API testing and reusable developer workflows, published as an installable npm package.",
+    tags: ["Node.js", "TypeScript", "Commander.js", "npm"],
+    live_link: "https://netshift-chi.vercel.app/",
+    github_repo_link: "https://github.com/slhnx/netshift",
+  },
+  {
     icon: "https://utfs.io/f/4HrWTRZRvKfTHyhFHKeQGdmTR6nIXC3iFxLJy7ul1zrEPpoq",
     title: "LogoCraft",
     description: "An AI Logo Gpenerator SaaS App built using Next.js",
