@@ -19,7 +19,7 @@ const PostList = ({ posts }: { posts: Post[] }) => {
           initial={{ opacity: 0, y: -15, filter: "blur(40px)" }}
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           transition={{ delay: 0.8, duration: 0.6, ease: "easeInOut" }}
-          className="text-xl font-bold text-foreground mb-4"
+          className="text-xl font-bold text-foreground mb-4 section-heading"
         >
           My Writings 🖊️
         </motion.h1>
@@ -27,7 +27,7 @@ const PostList = ({ posts }: { posts: Post[] }) => {
           initial={{ opacity: 0, y: -15, filter: "blur(40px)" }}
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           transition={{ delay: 0.6, duration: 0.6, ease: "easeInOut" }}
-          className="text-muted-foreground max-w-2xl"
+          className="text-muted-foreground max-w-2xl leading-relaxed"
         >
           This is my writing area, I document all my learnings here. You can
           find code snippets, blogs on technologies or in general what I think
@@ -39,7 +39,7 @@ const PostList = ({ posts }: { posts: Post[] }) => {
           {posts && posts?.map((post, idx) => (
             <motion.div
               onMouseEnter={() => setHovered(idx)}
-              className="my-3 transition-colors p-4 rounded-lg"
+              className="my-3 transition-colors p-4 rounded-lg relative blog-card"
               key={post?.slug}
               initial={{ opacity: 0, y: -15, filter: "blur(40px)" }}
               animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
@@ -60,7 +60,7 @@ const PostList = ({ posts }: { posts: Post[] }) => {
                   <img
                     src={post?.coverImage}
                     alt={post?.title}
-                    className="rounded-lg w-full"
+                    className="rounded-lg w-full transition-transform duration-300 group-hover:scale-[1.02]"
                   />
                 </div>
                 <div>

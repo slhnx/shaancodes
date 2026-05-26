@@ -1,5 +1,5 @@
 "use client";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { Quote } from "lucide-react";
 
 interface QuoteCardProps {
@@ -14,52 +14,45 @@ const QuoteCard = ({ quote, author, delay = 0 }: QuoteCardProps) => {
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{
-        duration: 0.5,
+        duration: 0.6,
         delay,
         ease: "easeOut",
       }}
       className="relative w-full mx-auto"
     >
-      {/* Quote mark */}
-      <div className="absolute z-10 -top-4 left-4 select-none pointer-events-none">
-        <span className="text-quote-mark">
-          <Quote className="transform rotate-180 text-primary" size={34} />
+      {/* Floating quote mark */}
+      <div className="absolute z-10 -top-5 left-6 select-none pointer-events-none">
+        <span className="text-primary/30">
+          <Quote className="transform rotate-180" size={40} strokeWidth={1.5} />
         </span>
       </div>
 
-      <div
-        className="
-          border border-quote-border
-          rounded-lg
-          bg-card/50 backdrop-blur-sm
-          px-4 pt-10 pb-6
-          sm:px-6 sm:pt-12 sm:pb-7
-          md:px-8 md:pt-14 md:pb-8
-        "
-      >
-        <blockquote className="mb-4 sm:mb-6">
+      <div className="quote-card px-6 pt-12 pb-8 sm:px-8 sm:pt-14 sm:pb-9 md:px-10 md:pt-16 md:pb-10">
+        <blockquote className="mb-6">
           <p
             className="
-              font-serif italic
-              text-sm sm:text-base md:text-lg
+              quote-serif italic
+              text-base sm:text-lg md:text-xl
               leading-relaxed
-              text-quote-text
+              text-foreground/80
             "
           >
-            “{quote}”
+            &ldquo;{quote}&rdquo;
           </p>
         </blockquote>
 
-        <footer className="text-right">
+        <footer className="flex items-center justify-end gap-2">
+          <div className="h-px w-8 bg-muted-foreground/30"></div>
           <cite
             className="
-              font-serif
-              text-xs sm:text-sm
-              text-quote-author
+              quote-serif
+              text-sm sm:text-base
+              text-muted-foreground
               not-italic
+              font-medium
             "
           >
-            — {author}
+            {author}
           </cite>
         </footer>
       </div>

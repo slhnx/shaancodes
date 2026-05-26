@@ -18,7 +18,7 @@ const Experiences = () => {
           initial={{ opacity: 0, y: -15, filter: "blur(40px)" }}
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           transition={{ delay: 0.4, duration: 0.6, ease: "easeInOut" }}
-          className="text-xl font-bold text-foreground mb-4"
+          className="text-xl font-bold text-foreground mb-4 section-heading"
         >
           Work Experience
         </motion.h1>
@@ -26,7 +26,7 @@ const Experiences = () => {
           initial={{ opacity: 0, y: -15, filter: "blur(40px)" }}
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           transition={{ delay: 0.4, duration: 0.6, ease: "easeInOut" }}
-          className="text text-muted-foreground max-w-2xl"
+          className="text text-muted-foreground max-w-2xl leading-relaxed"
         >
           My professional journey as a Full Stack Developer, building innovative
           solutions and contributing to impactful projects.
@@ -37,7 +37,7 @@ const Experiences = () => {
         {experiences.workExperiences.map((experience, index) => (
           <Accordion key={index} type="single" collapsible defaultValue="item-1" >
             <AccordionItem value="item-1">
-              <AccordionTrigger className="rounded-br-none rounded-bl-none flex items-center gap-x-2 hover:no-underline py-2 px-3 hover:bg-muted-foreground/10 mt-2 ">
+              <AccordionTrigger className="rounded-lg flex items-center gap-x-2 hover:no-underline py-2 px-3 hover:bg-muted-foreground/8 mt-2 transition-colors duration-200">
                 <div className="flex items-start gap-4 mb-6">
                   <img
                     src={experience.companyLogo}
@@ -84,7 +84,7 @@ const Experiences = () => {
                             key={idx}
                             className="flex items-start gap-3 text-muted-foreground"
                           >
-                            <div className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0"></div>
+                            <div className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0 timeline-dot"></div>
                             <span>{responsibility}</span>
                           </li>
                         ),

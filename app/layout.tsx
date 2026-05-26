@@ -1,13 +1,21 @@
 import { Providers } from "@/components/providers";
 import type { Metadata } from "next";
-import { Inter_Tight, Roboto_Mono } from "next/font/google";
+import { Sora, Roboto_Mono, Lora } from "next/font/google";
 // @ts-ignore
 import "./global.css";
 import { Head } from "next/document";
 
-const inter = Inter_Tight({
-  variable: "--font-inter-tight",
+const sora = Sora({
+  variable: "--font-sora",
   subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800"],
+});
+
+const lora = Lora({
+  variable: "--font-lora",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  style: ["normal", "italic"],
 });
 
 const robotoMono = Roboto_Mono({
@@ -59,7 +67,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.className} ${robotoMono.variable} antialiased`}>
+      <body className={`${sora.className} ${sora.variable} ${robotoMono.variable} ${lora.variable} antialiased`}>
         <Providers>{children}</Providers>
       </body>
     </html>

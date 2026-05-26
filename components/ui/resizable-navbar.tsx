@@ -244,7 +244,7 @@ export const NavbarLogo = () => {
         height={40}
         className="rounded-md"
       />
-      <span className="font-medium text-black dark:text-white">Shaan Alam</span>
+      <span className="font-semibold tracking-tight text-black dark:text-white">Shaan Alam</span>
     </Link>
   );
 };

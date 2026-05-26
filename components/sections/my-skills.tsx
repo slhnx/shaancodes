@@ -12,7 +12,7 @@ const MySkills = () => {
           initial={{ opacity: 0, y: -15, filter: "blur(40px)" }}
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           transition={{ delay: 0.4, duration: 0.4, ease: "easeInOut" }}
-          className="text-xl mb-4 font-semibold"
+          className="text-xl mb-4 font-semibold section-heading"
         >
           Skills
         </motion.h1>
@@ -20,7 +20,7 @@ const MySkills = () => {
           initial={{ opacity: 0, y: -15, filter: "blur(40px)" }}
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           transition={{ delay: 0.4, duration: 0.6, ease: "easeInOut" }}
-          className="text-muted-foreground max-w-2xl"
+          className="text-muted-foreground max-w-2xl leading-relaxed"
         >
           A showcase of the tools, technologies, and concepts I&apos;ve learned
           and applied throughout my journey.

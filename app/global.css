@@ -6,8 +6,9 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-inter-tight);
+  --font-sans: var(--font-sora);
   --font-mono: var(--font-roboto-mono);
+  --font-serif: var(--font-lora);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -45,7 +46,7 @@
 
 :root {
   --radius: 0.65rem;
-  --background: oklch(1 0 0);
+  --background: oklch(0.985 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
@@ -77,6 +78,8 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+  --glow-color: rgba(0, 0, 0, 0.04);
+  --accent-glow: rgba(100, 100, 255, 0.08);
 }
 
 .dark {
@@ -111,6 +114,8 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
+  --glow-color: rgba(255, 255, 255, 0.02);
+  --accent-glow: rgba(140, 140, 255, 0.06);
 }
 
 @layer base {
@@ -119,13 +124,57 @@
   }
   body {
     @apply bg-background text-foreground;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
   }
+}
+
+/* --- Subtle dot-grid background pattern --- */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-image: radial-gradient(circle, var(--border) 1px, transparent 1px);
+  background-size: 28px 28px;
+  opacity: 0.4;
+  pointer-events: none;
+}
+.dark body::before {
+  opacity: 0.15;
 }
 
 *::selection {
   @apply bg-primary text-primary-foreground;
 }
 
+/* --- Section headings: refined letter-spacing --- */
+.section-heading {
+  letter-spacing: -0.03em;
+}
+
+/* --- Animated gradient name text --- */
+.hero-name {
+  background: linear-gradient(
+    135deg,
+    var(--foreground) 0%,
+    var(--muted-foreground) 40%,
+    var(--foreground) 60%,
+    var(--muted-foreground) 100%
+  );
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer-text 6s ease-in-out infinite;
+}
+@keyframes shimmer-text {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* --- Underline link hover effect --- */
 .underline-effect {
   @apply relative text-primary;
   &:after {
@@ -134,11 +183,11 @@
     bottom: -1px;
     left: 0;
     width: 100%;
-    height: 1px;
+    height: 1.5px;
     background-color: var(--primary);
     transform: scaleX(0);
     transform-origin: bottom right;
-    transition: transform 0.6s ease-out;
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
   &:hover:after {
     transform: scaleX(1);
@@ -146,8 +195,251 @@
   }
 }
 
+/* --- Glassmorphism card --- */
+.glass-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  backdrop-filter: blur(12px);
+  transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.glass-card:hover {
+  border-color: var(--ring);
+  box-shadow:
+    0 4px 24px var(--glow-color),
+    0 0 0 1px var(--border);
+  transform: translateY(-2px);
+}
+.dark .glass-card {
+  background: oklch(0.18 0 0 / 60%);
+}
+.dark .glass-card:hover {
+  border-color: oklch(1 0 0 / 15%);
+  box-shadow:
+    0 4px 30px rgba(255, 255, 255, 0.03),
+    0 0 0 1px oklch(1 0 0 / 12%);
+}
 
+/* --- Skill badges: glassmorphism hover --- */
+[data-slot="badge"] {
+  transition: all 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  cursor: default;
+}
+[data-slot="badge"]:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px var(--glow-color);
+}
+.dark [data-slot="badge"]:hover {
+  box-shadow: 0 4px 14px rgba(255, 255, 255, 0.03);
+}
 
+/* --- Blog card hover glow --- */
+.blog-card {
+  position: relative;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+.blog-card::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: 13px;
+  background: linear-gradient(135deg, transparent 0%, var(--border) 50%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+.blog-card:hover::before {
+  opacity: 1;
+}
+.blog-card:hover {
+  background: var(--accent);
+}
+
+/* --- Blog tag pills --- */
+.blog-tag-item {
+  @apply bg-muted text-muted-foreground px-2.5 py-0.5 rounded-full text-xs transition-all;
+  border: 1px solid transparent;
+}
+.blog-tag-item:hover {
+  @apply bg-primary/8 text-primary;
+  border-color: var(--border);
+}
+
+/* --- Profile image ambient glow --- */
+.profile-ring {
+  box-shadow:
+    0 0 0 3px var(--background),
+    0 0 0 4px var(--border),
+    0 8px 30px var(--accent-glow);
+  transition: all 0.3s ease;
+}
+.profile-ring:hover {
+  box-shadow:
+    0 0 0 3px var(--background),
+    0 0 0 4px var(--ring),
+    0 12px 40px var(--accent-glow);
+}
+
+/* --- Header image overlay gradient --- */
+.header-overlay {
+  position: relative;
+  overflow: hidden;
+}
+.header-overlay::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: linear-gradient(to top, var(--background), transparent);
+  pointer-events: none;
+  border-radius: 0 0 0.5rem 0.5rem;
+}
+
+/* --- Quote card serif styling --- */
+.quote-serif {
+  font-family: var(--font-lora), Georgia, serif;
+}
+
+/* --- Quote card premium look --- */
+.quote-card {
+  position: relative;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: linear-gradient(135deg, var(--card) 0%, var(--accent) 100%);
+  backdrop-filter: blur(12px);
+  overflow: hidden;
+}
+.quote-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 100%;
+  background: linear-gradient(to bottom, var(--foreground), transparent);
+  opacity: 0.3;
+}
+.dark .quote-card {
+  background: linear-gradient(135deg, oklch(0.18 0 0 / 80%) 0%, oklch(0.22 0 0 / 60%) 100%);
+}
+.dark .quote-card::before {
+  background: linear-gradient(to bottom, oklch(0.9 0 0), transparent);
+  opacity: 0.15;
+}
+
+/* --- Social icon hover effect --- */
+.social-icon-wrap {
+  transition: all 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.social-icon-wrap:hover {
+  transform: scale(1.15) translateY(-1px);
+  color: var(--foreground);
+}
+
+/* --- Contact gradient text --- */
+.gradient-heading {
+  background: linear-gradient(135deg, var(--foreground) 0%, var(--muted-foreground) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* --- Animated gradient divider --- */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--border) 15%,
+    var(--muted-foreground) 50%,
+    var(--border) 85%,
+    transparent 100%
+  );
+  opacity: 0.4;
+}
+
+/* --- Shimmer CTA button --- */
+.shimmer-btn {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+.shimmer-btn::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    var(--glow-color) 25%,
+    transparent 50%
+  );
+  transform: rotate(45deg);
+  animation: shimmer-sweep 4s ease-in-out infinite;
+  pointer-events: none;
+  z-index: -1;
+}
+@keyframes shimmer-sweep {
+  0% { transform: rotate(45deg) translateX(-100%); }
+  100% { transform: rotate(45deg) translateX(100%); }
+}
+
+/* --- Experience timeline dot pulse --- */
+.timeline-dot {
+  position: relative;
+}
+.timeline-dot::after {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  border: 1px solid var(--primary);
+  opacity: 0;
+  animation: dot-pulse 2.5s ease-in-out infinite;
+}
+@keyframes dot-pulse {
+  0%, 100% { opacity: 0; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(1.6); }
+}
+
+/* --- GitHub calendar card wrapper --- */
+.github-cal-wrap {
+  padding: 16px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  transition: border-color 0.3s ease;
+}
+.github-cal-wrap:hover {
+  border-color: var(--ring);
+}
+.dark .github-cal-wrap {
+  background: oklch(0.18 0 0 / 50%);
+}
+
+/* --- Visitor count badge --- */
+.visitor-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--accent);
+  font-variant-numeric: tabular-nums;
+  transition: border-color 0.3s ease;
+}
+.visitor-badge:hover {
+  border-color: var(--ring);
+}
+
+/* --- Article styles --- */
 .article > * {
   margin: 1.5rem 0;
 }

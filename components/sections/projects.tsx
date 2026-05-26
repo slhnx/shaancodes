@@ -19,7 +19,7 @@ const Projects = () => {
           initial={{ opacity: 0, y: -15, filter: "blur(40px)" }}
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           transition={{ delay: 0.4, duration: 0.6, ease: "easeInOut" }}
-          className="text-xl font-bold text-foreground mb-4"
+          className="text-xl font-bold text-foreground mb-4 section-heading"
         >
           Projects
         </motion.h1>
@@ -27,7 +27,7 @@ const Projects = () => {
           initial={{ opacity: 0, y: -15, filter: "blur(40px)" }}
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           transition={{ delay: 0.4, duration: 0.6, ease: "easeInOut" }}
-          className="text-muted-foreground max-w-2xl"
+          className="text-muted-foreground max-w-2xl leading-relaxed"
         >
           A collection of things I&apos;ve built — from small experiments to
           full-fledged applications.
@@ -72,20 +72,21 @@ const Projects = () => {
               defaultValue="item-1"
             >
               <AccordionItem value="item-1">
-                <AccordionTrigger className="gap-x-2 hover:no-underline py-0 px-3 hover:bg-muted-foreground/10 mt-2 ">
+                <AccordionTrigger className="gap-x-2 hover:no-underline py-0 px-3 hover:bg-muted-foreground/8 mt-2 rounded-lg transition-colors duration-200">
                   <div className="flex items-center gap-x-2">
                     <img
                       src={project.icon}
                       width={20}
                       height={20}
                       alt={project.title}
+                      className="rounded-md"
                     />
                     <h1 className="text-primary font-semibold my-3">
                       {project.title}
                     </h1>
                   </div>
                 </AccordionTrigger>
-                <AccordionContent className="pl-8 text-muted-foreground border-b">
+                <AccordionContent className="pl-8 pr-3 text-muted-foreground border-b border-border/50 leading-relaxed">
                   {project.description}
                   <div className="relative z-10 flex items-center space-x-3 mt-4">
                     <a
